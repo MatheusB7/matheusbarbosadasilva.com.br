@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eletrônica - Matheus Barbosa da Silva</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-content">
+            <h1>Matheus Barbosa da Silva</h1>
+            <label class="switch">
+                <input type="checkbox" id="theme-switch">
+                <span class="slider"></span>
+            </label>
+        </div>
+        
+        <!-- Botões de redes sociais -->
+        <div class="social-icons">
+            <a href="https://br.linkedin.com/in/matheus-barbosa-da-silva-5681342a2" target="_blank">🔗 LinkedIn</a>
+            <a href="https://github.com/MatheusB7" target="_blank">💻 GitHub</a>
+            <a href="https://www.instagram.com/matheusbarbosas2/" target="_blank">📸 Instagram</a>
+        </div>
+    </header>
+
+    <!-- Menu Lateral -->
+    <nav>
+        <ul>
+            <li class="menu-item" id="home">
+                <a href="index.html">
+                    <span class="emoji">🏠</span>
+                    <span class="menu-text">Home</span>
+                </a>
+            </li>
+            <li class="menu-item" id="programacao">
+                <a href="programacao.html">
+                    <span class="emoji">💻</span>
+                    <span class="menu-text">Programação</span>
+                </a>
+            </li>
+            <li class="menu-item" id="eletronica">
+                <a href="eletronica.html">
+                    <span class="emoji">⚡</span>
+                    <span class="menu-text">Eletrônica</span>
+                </a>
+            </li>
+            <li class="menu-item" id="sobre">
+                <a href="sobremim.html">
+                    <span class="emoji">👤</span>
+                    <span class="menu-text">Sobre Mim</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <section>
+            <h2>Projetos de Eletrônica</h2>
+            <p>Aqui estão alguns dos projetos que desenvolvi na área de eletrônica, desde automação até circuitos digitais.</p>
+        </section>
+
+        <!-- Projeto 1: Robô de Irrigação Pontual -->
+        <section id="robo-irrigacao">
+            <h2>🤖 Robô de Irrigação Pontual</h2>
+            <p>
+                Em 2017, participei do projeto de robótica no IFPR, onde desenvolvemos um robô irrigador inteligente.
+                O sistema foi projetado para reduzir o desperdício de água nas plantações, identificando a necessidade de irrigação por sensores infravermelhos.
+            </p>
+            <p>
+                O robô era um veículo autônomo que media a umidade do solo e irrigava apenas onde necessário, reduzindo o consumo de água.
+                Além disso, contava com um sistema de GPS para retornar à base quando a bateria estivesse baixa, onde era recarregado por energia solar.
+            </p>
+            <p>
+                <strong>Palavras-chave:</strong> Irrigação, Economia de Água, Automação Agrícola
+            </p>
+            <p>
+                <strong>Equipe:</strong> Matheus Barbosa da Silva e outros colegas do IFPR
+            </p>
+            <!-- Imagem do projeto -->
+            <img src="Images/IFTech e Jo CIF.jpg" alt="Robô de Irrigação Pontual" width="500">
+            <p>
+                📄 Referência do projeto (Página 16): <a href="https://ifpr.edu.br/curitiba/wp-content/uploads/sites/11/2023/03/Anais-IFTech-Campus-Curitiba_Vol-05-2017-2-1.pdf" target="_blank">Clique aqui</a>
+            </p>
+        </section>
+
+        <!-- Projeto 2: Esteira com Display Contador -->
+        <section id="esteira-contador">
+            <h2>🔢 Esteira com Display Contador</h2>
+            <p>
+                Em 2018, desenvolvi um sistema de contagem utilizando eletrônica digital. O projeto consistia em uma esteira transportadora equipada com um display contador, capaz de registrar a passagem de objetos.
+            </p>
+            <p>
+                <strong>Componentes Utilizados:</strong>
+            </p>
+            <ul>
+                <li>CI's 555 para controle do pulso</li>
+                <li>CI's 4026 para comandar a contagem e exibição no display</li>
+                <li>LEDs infravermelhos para detecção de passagem</li>
+                <li>2 Displays 7 Segmentos para contagem de 00 à 99</li>
+                <li>Motor de vidro elétrico de carro para movimentação da esteira</li>
+                <li>Potênciometro 100k Ohms</li>
+                <li>Transistor Mosfet IRFZ46N</li>
+            </ul>
+            <p>
+                O protótipo foi construído com materiais simples, como tubos de rolo de pintura e lixas, para simular uma esteira real de baixo custo.
+            </p>
+            <!-- Imagens do projeto -->
+            <p>📷 Imagens do projeto:</p>
+            <img src="Images/Foto circuito contador de decada.jpg" alt="Esteira com Display Contador" width="558">
+            <img src="Images/Circuito PWM.PNG" alt="Esteira com Display Contador" width="500">
+            <!-- Vídeo do projeto -->
+            <video width="520" height="300" controls>
+                <source src="Images/Esteira.mp4" type="video/mp4">
+                Seu navegador não suporta o formato de vídeo.
+            </video>            
+        </section>
+
+        <!-- Projeto 3: Interruptor por Palmas -->
+        <section id="interruptor-palmas">
+            <h2>👏 Interruptor por Palmas</h2>
+            <p>
+                A realização desse projeto visa atender à atividade do primeiro bimestre da disciplina de Circuitos Elétricos II dos cursos de Engenharia Elétrica e da Computação da Universidade Positivo.
+                A proposta docente era construir um circuito prático com pelo menos dez elementos básicos e a presença de capacitores ou indutores. A proposta de chaveamento por palmas foi escolhida para acionar elementos elétricos sem o contato direto com o interruptor.
+            </p>
+            <p>
+                Este projeto tem como objetivo inovar e trazer soluções interessantes para o chaveamento de lâmpadas ou mecanismos elétricos, permitindo o acionamento através de palmas. A realização do circuito foi testada e atestada para o perfeito funcionamento.
+            </p>
+            <p>
+                <strong>Componentes Utilizados:</strong>
+            </p>
+            <ul>
+                <li>CI 555</li>
+                <li>CI 4017</li>
+                <li>Bateria 9v</li>
+                <li>Potênciometro 100k Ohms</li>
+                <li>Resistores</li>
+                <li>Transistores BC548</li>
+                <li>Microfone de Eletreto</li>
+                <li>Capacitor e Diodo</li>
+                <li>Relé 12v</li>
+            </ul>
+            <p>📷 Imagens e Vídeos do projeto:</p>
+            <img src="Images/Grupo Palmas UP.PNG" alt="Montagem do Circuito Palmas" width="517">
+            <img src="Images/PCI Palmas.jpg" alt="Montagem do Circuito Palmas" width="500">
+            <img src="Images/Circuito Palmas.jpg" alt="Circuito Palmas" width="517">
+            <img src="Images/CircuitoPalmas.jpg" alt="Circuito Palmas" width="497">
+            <video width="510" height="300" controls>
+                <source src="Images/Montagem Circuito Palmas.mp4" type="video/mp4">
+                Seu navegador não suporta o formato de vídeo.
+            </video>
+            <video width="505" height="300" controls>
+                <source src="Images/Circuito Palmas UP.mp4" type="video/mp4">
+                Seu navegador não suporta o formato de vídeo.
+            </video>
+            <p>
+                📄 <a href="Arquivos/Circuito Palmas Apresentação.pdf" target="_blank">Apresentação</a>
+            </p>
+            <p>
+                📄 <a href="Arquivos/Circuito Palmas.pdf" target="_blank">Análise do Projeto</a>
+            </p>
+        <!-- Projeto 4: Carrinho de Polícia com Cockpit de Ativação Remota -->
+        <section id="carrinho-policia">
+            <h2>🚔 Carrinho de Polícia com Cockpit de Ativação Remota</h2>
+            <p>
+                Este projeto envolve a modificação de um carrinho de controle remoto tradicional. Retirei a placa de controle original e substituí por um novo sistema com arduino, incluindo um servomotor com uma nova estrutura para controle de eixos das rodas, um novo motor de tração, giroflex com LEDs e um cockpit com volante, pedais como acelerador e freio e switche de ativação.
+            </p>
+            <p>
+                O carrinho foi adaptado com um servo motor para controle das rodas e um sistema de comunicação sem fio, com base no código desenvolvido no Tinkercad.
+            </p>
+            <p>
+                <strong>Componentes Utilizados:</strong>
+            </p>
+            <ul>
+                <li>Motor de tração</li>
+                <li>Servo motor 90g</li>
+                <li>Tecla de ativação para LED's</li>
+                <li>LED's azul e vermelho para giroflex</li>
+                <li>Pedais para acelerador e freio</li>
+                <li>Transmissor e receptor de RF</li>
+                <li>Placas de Arduino UNO para controle</li>
+                <li>Módulo Relé</li>
+                <li>Bateria 9v</li>
+            </ul>
+            <p>📷 Imagens do projeto:</p>
+            <img src="images/Carrinho De Policia.jpg" alt="Carrinho de Polícia" width="500">
+            <img src="images/CarrinhoDePolicia.jpg" alt="Carrinho de Polícia" width="500">
+            <img src="images/Carrinho De Policia Cockpit.jpg" alt="Carrinho de Polícia" width="500">
+            <img src="images/CarrinhoDePoliciaPlaca.jpg" alt="Carrinho de Polícia" width="500">
+            <p>🔗 Acesse o código do projeto no Tinkercad: <a href="https://www.tinkercad.com/things/lVYMfVZe95z-projeto-console?sharecode=aWlE-ioutsX2p1ajxt3HBLEreVHiGjBqDO7Jh6Ux5TY" target="_blank">Clique aqui</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Matheus Barbosa da Silva - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
