@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Eficiência de Combustível</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <header>
+        <div class="header-content">
+            <h1>Preço Combustível</h1>
+        </div>
+    </header>
+    <main>
+        <section id="programacao">
+            <h2>Programa em C: Preço Combustível</h2>
+  <pre>
+#include &lt;locale.h&gt;
+#include &lt;stdio.h&gt;
+#ifdef _WIN32
+#include &lt;stdlib.h&gt;
+#define LIMPAR_TELA "cls"
+#else
+#include &lt;unistd.h&gt;
+#define LIMPAR_TELA "clear"
+#endif
+
+int main() {
+  // Configura a localização para permitir acentos e caracteres especiais
+  // setlocale(LC_ALL,"Portuguese_Brazil");
+
+  // Limpar a tela
+  system(LIMPAR_TELA);
+
+  float capacidadeTanque, precoEtanol, precoGasolina, consumoEtanol,
+      consumoGasolina;
+  float custoPorKmEtanol, custoPorKmGasolina;
+  float autonomiaEtanol, autonomiaGasolina;
+
+  // Cabeçalho
+  printf("=============================================\n");
+  printf("  CALCULADORA DE EFICI%cNCIA DE COMBUST%cVEL  \n", 210, 214);
+  printf("    FEITO PELO MATHEUS BARBOSA DA SILVA  \n", 210, 214);
+  printf("=============================================\n\n");
+
+  // Solicitar as informações ao usuário
+  printf("Digite a capacidade do tanque de combust%cvel (em litros): ", 161);
+  scanf("%f", &capacidadeTanque);
+
+  printf("Digite o pre%co do etanol (R$/litro): ", 135);
+  scanf("%f", &precoEtanol);
+
+  printf("Digite o pre%co da gasolina (R$/litro): ", 135);
+  scanf("%f", &precoGasolina);
+
+  printf("Digite o consumo do carro com etanol (km/l): ");
+  scanf("%f", &consumoEtanol);
+
+  printf("Digite o consumo do carro com gasolina (km/l): ");
+  scanf("%f", &consumoGasolina);
+
+  // Calcular o custo por quilômetro para cada combustível
+  custoPorKmEtanol = precoEtanol / consumoEtanol;
+  custoPorKmGasolina = precoGasolina / consumoGasolina;
+
+  // Calcular a autonomia do carro com cada combustível
+  autonomiaEtanol = consumoEtanol * capacidadeTanque;
+  autonomiaGasolina = consumoGasolina * capacidadeTanque;
+
+  // Mostrar os resultados
+  printf("\n=============================================\n");
+  printf("                RESULTADOS                   \n");
+  printf("=============================================\n");
+
+  printf("Custo por km com etanol:       R$ %.2f\n", custoPorKmEtanol);
+  printf("Custo por km com gasolina:     R$ %.2f\n", custoPorKmGasolina);
+  printf("---------------------------------------------\n");
+  printf("Autonomia com etanol:          %.2f km\n", autonomiaEtanol);
+  printf("Autonomia com gasolina:        %.2f km\n", autonomiaGasolina);
+
+  // Comparar os custos e determinar o mais eficiente
+  printf("=============================================\n");
+  if (custoPorKmEtanol < custoPorKmGasolina) {
+    printf(">>> O etanol %c mais econ%cmico para o seu carro.\n", 130, 147);
+  } else {
+    printf(">>> A gasolina %c mais econ%cmica para o seu carro.\n", 130, 147);
+  }
+  printf("=============================================\n");
+
+  return 0;
+}
+  </pre>
+
+  <h1>Simulação do Programa</h1>
+  <form id="form">
+    <label for="capacidadeTanque">Capacidade do tanque (em litros):</label><br>
+    <input type="number" id="capacidadeTanque" required><br>
+
+    <label for="precoEtanol">Preço do etanol (R$/litro):</label><br>
+    <input type="number" id="precoEtanol" required><br>
+
+    <label for="precoGasolina">Preço da gasolina (R$/litro):</label><br>
+    <input type="number" id="precoGasolina" required><br>
+
+    <label for="consumoEtanol">Consumo com etanol (km/l):</label><br>
+    <input type="number" id="consumoEtanol" required><br>
+
+    <label for="consumoGasolina">Consumo com gasolina (km/l):</label><br>
+    <input type="number" id="consumoGasolina" required><br><br>
+
+    <button type="submit">Calcular</button>
+  </form>
+
+  <div class="results" id="results" style="display:none;">
+    <h3>Resultado da Simulação:</h3>
+    <p><strong>Custo por km com etanol:</strong> R$ <span id="custoEtanol"></span></p>
+    <p><strong>Custo por km com gasolina:</strong> R$ <span id="custoGasolina"></span></p>
+    <p><strong>Autonomia com etanol:</strong> <span id="autonomiaEtanol"></span> km</p>
+    <p><strong>Autonomia com gasolina:</strong> <span id="autonomiaGasolina"></span> km</p>
+    <p><strong>Combustível mais econômico:</strong> <span id="maisEconomico"></span></p>
+  </div>
+
+  <script>
+    document.getElementById('form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      // Obtendo os valores dos campos
+      const capacidadeTanque = parseFloat(document.getElementById('capacidadeTanque').value);
+      const precoEtanol = parseFloat(document.getElementById('precoEtanol').value);
+      const precoGasolina = parseFloat(document.getElementById('precoGasolina').value);
+      const consumoEtanol = parseFloat(document.getElementById('consumoEtanol').value);
+      const consumoGasolina = parseFloat(document.getElementById('consumoGasolina').value);
+
+      // Calculando o custo por km
+      const custoPorKmEtanol = precoEtanol / consumoEtanol;
+      const custoPorKmGasolina = precoGasolina / consumoGasolina;
+
+      // Calculando a autonomia
+      const autonomiaEtanol = consumoEtanol * capacidadeTanque;
+      const autonomiaGasolina = consumoGasolina * capacidadeTanque;
+
+      // Comparando os combustíveis
+      const maisEconomico = custoPorKmEtanol < custoPorKmGasolina ? "Etanol" : "Gasolina";
+
+      // Exibindo os resultados
+      document.getElementById('custoEtanol').textContent = custoPorKmEtanol.toFixed(2);
+      document.getElementById('custoGasolina').textContent = custoPorKmGasolina.toFixed(2);
+      document.getElementById('autonomiaEtanol').textContent = autonomiaEtanol.toFixed(2);
+      document.getElementById('autonomiaGasolina').textContent = autonomiaGasolina.toFixed(2);
+      document.getElementById('maisEconomico').textContent = maisEconomico;
+
+      // Mostrando os resultados na página
+      document.getElementById('results').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>

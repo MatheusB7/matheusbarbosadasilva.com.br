@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roleta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <header>
+        <div class="header-content">
+            <h1>Roleta</h1>
+        </div>
+    </header>
+
+    <main>
+        <section id="programacao">
+            <h2>Programa em C: Roleta</h2>
+            <p>Veja o código abaixo e insira os dados necessários para testar o simulador de roleta.</p>
+
+            <!-- Exibição do código -->
+            <pre>
+1. #include &lt;stdio.h&gt;
+2. #include &lt;stdlib.h&gt;
+3. #include &lt;time.h&gt;
+4.
+5. void girarRoleta(char* opcoes[], int numOpcoes) {
+6.     int sorteado = rand() % numOpcoes;
+7.     printf("A roleta parou em: %s\n", opcoes[sorteado]);
+8. }
+9.
+10. int main() {
+11.     int numOpcoes;
+12.     printf("Quantas opções deseja na roleta? ");
+13.     scanf("%d", &numOpcoes);
+14.     
+15.     char* opcoes[numOpcoes];
+16.     printf("Digite as opções:\n");
+17.     for (int i = 0; i &lt; numOpcoes; i++) {
+18.         scanf("%s", opcoes[i]);
+19.     }
+20.     
+21.     srand(time(NULL));
+22.     girarRoleta(opcoes, numOpcoes);
+23.     
+24.     return 0;
+25. }
+            </pre>
+
+            <!-- Simulação da roleta -->
+            <div class="input-form">
+                <h3>Teste a Roleta</h3>
+                <form id="form-roleta">
+                    <label for="opcoes">Quantas opções deseja na roleta:</label>
+                    <input type="number" id="opcoes" name="opcoes" required min="1" max="10"><br>
+
+                    <label for="opcao">Digite as opções (uma por linha):</label><br>
+                    <textarea id="opcao" name="opcao" rows="5" required></textarea><br>
+
+                    <button type="submit">Girar a Roleta</button>
+                </form>
+            </div>
+
+            <div id="resultado"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Matheus Barbosa da Silva - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        document.getElementById('form-roleta').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obter o número de opções e as opções inseridas pelo usuário
+            const numOpcoes = document.getElementById('opcoes').value;
+            const opcoesText = document.getElementById('opcao').value.trim();
+            const opcoes = opcoesText.split('\n');
+
+            if (opcoes.length !== parseInt(numOpcoes)) {
+                alert("O número de opções não corresponde ao valor informado.");
+                return;
+            }
+
+            // Função para gerar um número aleatório com melhor distribuição
+            const sorteado = Math.floor(Math.random() * opcoes.length);
+
+            // Exibir o resultado
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `<p>A roleta parou em: <strong>${opcoes[sorteado]}</strong></p>`;
+        });
+    </script>
+
+</body>
+</html>

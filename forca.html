@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <header>
+        <div class="header-content">
+            <h1>Jogo da Forca</h1>
+        </div>
+    </header>
+    <main>
+        <section id="programacao">
+            <h2>Programa em C: Jogo da Forca</h2>
+        <pre>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+                
+// Palavras e dicas em português
+const char *palavras_pt[] = {
+"harry potter", "vingadores", "planeta", "funcao", "cachorro", "gato", "carro", "valor", "velocidade", "tensao",
+"risada", "comer", "site", "corrimao", "degraus", "trofeu", "agua", "livro", "computador", "programacao",
+"ciencia", "guitarra", "avião", "engenharia", "escola", "professor", "universidade", "arvore", "jogo", "futebol",
+"relógio", "cinema", "historia", "matematica", "química", "física", "geografia", "futuro", "tecnologia", "esporte",
+"gelo", "lua", "sol", "oceano", "amigo", "viajar", "familia", "melancia", "telefone", "caderno", "camisa",
+"calça", "sapato", "escrita", "cartão", "banco", "mercado", "restaurante", "bairro", "praia", "aviao",
+"coragem", "luta", "sonho", "esperança", "paz", "sorriso", "corrida"
+};
+                
+// Dicas em português
+const char *dicas_pt[] = {
+"Filme de um Bruxo", "Grupo da Marvel", "Corpo celeste", "Operação matemática", "Animal de estimação", "Animal felino", 
+"Veículo automotor", "Definição de algo importante", "Mudança de posição", "Pressão elétrica", "Som associado a felicidade", 
+"Ação de se alimentar", "Página na internet", "Escada de segurança", "Parte de uma escada", "Prêmio por conquista", "Substância líquida essencial", 
+"Objeto de leitura", "Máquina para cálculos", "Linguagem de programação", "Estudo da natureza e fenômenos", "Instrumento musical", 
+"Meio de transporte", "Ramo da engenharia", "Instituição de ensino", "Pessoa que ensina", "Instituição de ensino superior", 
+"Planta", "Atividade recreativa", "Esporte coletivo", "Objeto usado para ver horas", "Espaço para assistir filmes", "Campo de estudo", 
+"Estudo das reações químicas", "Matéria de estudo físico", "Ciência sobre o planeta", "Futuro distante", "Muito anos tempos", 
+"Atividade física", "Substância congelada", "Satélite da Terra", "Estrela do sistema solar", "Água salgada", "Corpo rochoso", 
+"Pessoa com quem se compartilha momentos", "Ação de mover-se", "Grupo de pessoas", "Fruta vermelha", "Dispositivo de comunicação", 
+"Objeto para escrever", "Vestir-se", "Calçado", "Forma de pagamento", "Veículo motorizado", "Fonte de energia", "Planta colorida", 
+"Área externa", "Instituição financeira", "Lugar de compras", "Comida fora de casa", "Parte da cidade", "Área próxima ao mar", 
+"Avião com asas fixas", "Esforço físico", "Objetivo ou desejo", "Oportunidade futura", "Gargalhada", "Sentimento de paz", 
+"Competição física"
+};
+                
+// Palavras e dicas em inglês
+const char *palavras_en[] = {
+"harry potter", "avengers", "planet", "function", "dog", "cat", "car", "value", "speed", "tension",
+"laughter", "eat", "website", "handrail", "stairs", "trophy", "water", "book", "computer", "programming",
+"science", "guitar", "airplane", "engineering", "school", "teacher", "university", "tree", "game", "soccer",
+"clock", "cinema", "history", "mathematics", "chemistry", "physics", "geography", "future", "technology", "sport",
+"ice", "moon", "sun", "ocean", "friend", "travel", "family", "watermelon", "phone", "notebook", "shirt",
+"pants", "shoes", "writing", "card", "bank", "market", "restaurant", "neighborhood", "beach", "plane",
+"courage", "fight", "dream", "hope", "smile", "race"
+};
+                
+// Dicas em inglês
+const char *dicas_en[] = {
+"Movie about Witchcraft", "Marvel's team", "Celestial body", "Mathematical operation", "Pet animal", "Feline animal", 
+"Automotive vehicle", "Definition of something important", "Position change", "Electrical pressure", "Sound associated with happiness", 
+"Action of eating", "Internet page", "Safety staircase", "Part of a staircase", "Award for achievement", "Essential liquid substance", 
+"Reading material", "Machine for calculations", "Programming language", "Study of nature and phenomena", "Musical instrument", 
+"Means of transportation", "Engineering branch", "Educational institution", "Person who teaches", "Higher education institution", 
+"Plant", "Recreational activity", "Team sport", "Object for telling time", "Place to watch movies", "Study field", 
+"Study of chemical reactions", "Physical study subject", "Science about the planet", "Distant future", "Machines and gadgets", 
+"Physical activity", "Frozen substance", "Earth's satellite", "Sun of the solar system", "Saltwater", "Rocky body", 
+"Person with whom you share moments", "Movement action", "Group of people", "Red fruit", "Communication device", 
+"Object for writing", "Dress up", "Footwear", "Payment method", "Motorized vehicle", "Energy source", "Colorful plant", 
+"Outdoor area", "Financial institution", "Shopping place", "Food outside home", "Part of a city", "Area near the sea", 
+"Fixed-wing airplane", "Physical effort", "Goal or desire", "Future opportunity", "Giggle", "Feeling of peace", 
+"Physical competition"
+};
+                
+// Função para desenhar o boneco da forca
+void desenhar_boneco(int tentativas) {
+if (tentativas == 6) {
+printf("\n\n\n\n\n\n");
+} else if (tentativas == 5) {
+printf("\n O\n | \n | \n | \n-----\n");
+} else if (tentativas == 4) {
+printf("\n O\n/| \n | \n | \n-----\n");
+} else if (tentativas == 3) {
+printf("\n O\n/|\\ \n | \n | \n-----\n");
+} else if (tentativas == 2) {
+printf("\n O\n/|\\ \n | \n/ \n-----\n");
+} else if (tentativas == 1) {
+printf("\n O\n/|\\ \n | \n/ \\ \n-----\n");
+} else {
+printf("\nVocê perdeu! O boneco foi completado.\n");
+}
+}
+                
+// Função para limpar a tela
+void limpar_tela() {
+// Para sistemas Windows
+system("cls");
+                
+// Para sistemas Unix/Linux/Mac
+// system("clear");
+}
+                
+int main() {
+srand(time(NULL));
+int idioma, tentativas = 6, vitoria = 0, letra_encontrada = 0;
+char letra, letra_adivinada[100], letras_usadas[100];
+int i, j, tam_palavra, ja_usada = 0, tentativas_erradas = 0, jogar_novamente = 1;
+                
+// Laço para jogar novamente
+while (jogar_novamente) {
+// Inicializar as variáveis
+tentativas = 6;
+letra_encontrada = 0;
+vitoria = 0;
+letras_usadas[0] = '\0';  // Limpar a lista de letras usadas
+
+// Selecionar o idioma
+system("cls");
+system("clear");
+printf("Escolha o idioma (1- Portugues, 2- English): ");
+scanf("%d", &idioma);
+                
+// Selecionar uma palavra aleatória
+int indice = rand() % 60;
+char *palavra = (idioma == 1) ? palavras_pt[indice] : palavras_en[indice];
+char *dica = (idioma == 1) ? dicas_pt[indice] : dicas_en[indice];
+                
+tam_palavra = strlen(palavra);
+for (i = 0; i < tam_palavra; i++) {
+letra_adivinada[i] = '_';
+}
+letra_adivinada[tam_palavra] = '\0';
+                
+printf("\nDica: %s\n", dica);
+                
+// Laço principal do jogo
+while (tentativas > 0) {
+ja_usada = 0;
+printf("\nPalavra: ");
+for (i = 0; i < tam_palavra; i++) {
+printf("%c ", letra_adivinada[i]);
+}
+printf("\n");
+
+printf("\nLetras usadas: %s\n", letras_usadas);
+printf("Tentativas restantes: %d\n", tentativas);
+printf("Digite uma letra: ");
+scanf(" %c", &letra);
+                
+// Verificar se a letra foi usada antes
+for (i = 0; i < strlen(letras_usadas); i++) {
+if (letras_usadas[i] == letra) {
+ja_usada = 1;
+printf("Você já usou essa letra!\n");
+break;
+}
+}
+if (ja_usada) continue;
+                
+// Adicionar letra usada à lista
+strncat(letras_usadas, &letra, 1);
+                
+// Verificar se a letra está na palavra
+for (i = 0; i < tam_palavra; i++) {
+if (palavra[i] == letra) {
+letra_adivinada[i] = letra;
+letra_encontrada = 1;
+}
+}
+                
+// Verificar vitória
+vitoria = 1;
+for (i = 0; i < tam_palavra; i++) {
+if (letra_adivinada[i] == '_') {
+vitoria = 0;
+break;
+}
+}
+                
+if (vitoria) {
+printf("\nParabéns! Você acertou a palavra: %s\n", palavra);
+break;
+}
+                
+if (!letra_encontrada) {
+tentativas--;
+desenhar_boneco(tentativas);
+} else {
+letra_encontrada = 0;
+}
+}
+
+if (tentativas == 0) {
+printf("\nVocê perdeu! A palavra era: %s\n", palavra);
+}
+                
+// Perguntar se o jogador quer jogar novamente
+printf("\nDeseja jogar novamente? (1- Sim, 0- Não): ");
+scanf("%d", &jogar_novamente);
+}
+                
+return 0;
+}
+</pre>
+    </div>
+
+    <h1>Jogo da Forca</h1>
+
+    <!-- Container do jogo -->
+    <div class="game-container">
+        <div id="hint" class="hint"></div>
+        <div id="wordDisplay" class="word-display"></div>
+        <div id="usedLetters" class="used-letters"></div>
+        <div id="remainingAttempts"></div>
+        <div id="drawing" class="drawing"></div>
+        <button class="button" id="guessButton">Adivinhar</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const palavras_pt = [
+            "harry potter", "vingadores", "planeta", "funcao", "cachorro", "gato", "carro", "valor", "velocidade", "tensao",
+            "risada", "comer", "site", "corrimao", "degraus", "trofeu", "agua", "livro", "computador", "programacao",
+            "ciencia", "guitarra", "aviao", "engenharia", "escola", "professor", "universidade", "arvore", "jogo", "futebol",
+            "relógio", "cinema", "historia", "matematica", "química", "física", "geografia", "futuro", "tecnologia", "esporte",
+            "gelo", "lua", "sol", "oceano", "amigo", "viajar", "familia", "melancia", "telefone", "caderno", "camisa",
+            "calça", "sapato", "escrita", "cartão", "banco", "mercado", "restaurante", "bairro", "praia", "aviao",
+            "coragem", "luta", "sonho", "esperança", "paz", "sorriso", "corrida"
+        ];
+        const dicas_pt = [
+            "Filme de um Bruxo", "Grupo da Marvel", "Corpo celeste", "Operação matemática", "Animal de estimação", "Animal felino", 
+            "Veículo automotor", "Definição de algo importante", "Mudança de posição", "Pressão elétrica", "Som associado a felicidade", 
+            "Ação de se alimentar", "Página na internet", "Escada de segurança", "Parte de uma escada", "Prêmio por conquista", "Substância líquida essencial", 
+            "Objeto de leitura", "Máquina para cálculos", "Linguagem de programação", "Estudo da natureza e fenômenos", "Instrumento musical", 
+            "Meio de transporte", "Ramo da engenharia", "Instituição de ensino", "Pessoa que ensina", "Instituição de ensino superior", 
+            "Planta", "Atividade recreativa", "Esporte coletivo", "Objeto usado para ver horas", "Espaço para assistir filmes", "Campo de estudo", 
+            "Estudo das reações químicas", "Matéria de estudo físico", "Ciência sobre o planeta", "Futuro distante", "Muito anos tempos", 
+            "Atividade física", "Substância congelada", "Satélite da Terra", "Estrela do sistema solar", "Água salgada", "Corpo rochoso", 
+            "Pessoa com quem se compartilha momentos", "Ação de mover-se", "Grupo de pessoas", "Fruta vermelha", "Dispositivo de comunicação", 
+            "Objeto para escrever", "Vestir-se", "Calçado", "Forma de pagamento", "Veículo motorizado", "Fonte de energia", "Planta colorida", 
+            "Área externa", "Instituição financeira", "Lugar de compras", "Comida fora de casa", "Parte da cidade", "Área próxima ao mar", 
+            "Avião com asas fixas", "Esforço físico", "Objetivo ou desejo", "Oportunidade futura", "Gargalhada", "Sentimento de paz", 
+            "Competição física"
+        ];
+
+        let palavraEscolhida = '';
+        let dicaEscolhida = '';
+        let tentativasRestantes = 6;
+        let letrasErradas = [];
+        let letrasCorretas = [];
+        let jogoAtivo = true;
+
+        function inicializarJogo() {
+            const randomIndex = Math.floor(Math.random() * palavras_pt.length);
+            palavraEscolhida = palavras_pt[randomIndex];
+            dicaEscolhida = dicas_pt[randomIndex];
+            letrasErradas = [];
+            letrasCorretas = [];
+            tentativasRestantes = 6;
+            atualizarTela();
+        }
+
+        function desenharBoneco() {
+            let desenho = '';
+            if (tentativasRestantes === 6) { 
+                desenho = '';
+            } else if (tentativasRestantes === 5) {
+                desenho = '\n O\n | \n | \n | \n-----\n'; 
+            } else if (tentativasRestantes === 4) {
+                desenho = '\n O\n/| \n | \n | \n-----\n'; 
+            } else if (tentativasRestantes === 3) {
+                desenho = '\n O\n/|\\ \n | \n | \n-----\n'; 
+            } else if (tentativasRestantes === 2) {
+                desenho = '\n O\n/|\\ \n | \n/ \n-----\n';
+            } else if (tentativasRestantes === 1) {
+                desenho = '\n O\n/|\\ \n | \n/ \\ \n-----\n'; 
+            } else {
+                desenho = '\nO boneco esta completo.\n';
+            }            
+            document.getElementById('drawing').textContent = desenho;
+        }
+
+        function atualizarTela() {
+            const palavraExibida = palavraEscolhida.split('').map(letra => {
+                if (letrasCorretas.includes(letra)) {
+                    return letra;
+                }
+                return '_';
+            }).join(' ');
+
+            document.getElementById('wordDisplay').textContent = palavraExibida;
+            document.getElementById('hint').textContent = `Dica: ${dicaEscolhida}`;
+            document.getElementById('remainingAttempts').textContent = `Tentativas restantes: ${tentativasRestantes}`;
+            document.getElementById('usedLetters').textContent = `Letras usadas: ${letrasErradas.join(', ')}`;
+            desenharBoneco();
+        }
+
+        document.getElementById('guessButton').addEventListener('click', () => {
+            if (jogoAtivo) {
+                const letra = prompt('Digite uma letra:').toLowerCase();
+                if (letra && !letrasErradas.includes(letra) && !letrasCorretas.includes(letra)) {
+                    if (palavraEscolhida.includes(letra)) {
+                        letrasCorretas.push(letra);
+                    } else {
+                        letrasErradas.push(letra);
+                        tentativasRestantes--;
+                    }
+                    atualizarTela();
+                    verificarFimDeJogo();
+                } else {
+                    alert('Letra inválida ou já utilizada!');
+                }
+            }
+        });
+
+        function verificarFimDeJogo() {
+            if (tentativasRestantes === 0) {
+                document.getElementById('result').textContent = 'Você perdeu! A palavra era: ' + palavraEscolhida;
+                jogoAtivo = false;
+            } else if (palavraEscolhida.split('').every(letra => letrasCorretas.includes(letra))) {
+                document.getElementById('result').textContent = 'Você ganhou!';
+                jogoAtivo = false;
+            }
+        }
+
+        window.onload = inicializarJogo;
+    </script>
+</body>
+</html>

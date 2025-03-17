@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Banco - Teste de Código</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <header>
+        <div class="header-content">
+            <h1>Simulador de Banco - Teste de Código</h1>
+        </div>
+    </header>
+
+    <main>
+        <section id="programacao">
+            <h2>Programa em C: Simulador de Banco</h2>
+            <p>Veja o código abaixo e insira os dados necessários para testar o simulador de banco.</p>
+            
+            <!-- Exibição do código -->
+            <pre>
+1. #include &lt;stdio.h&gt;
+2.
+3. #define MAX_TENTATIVAS 3
+4.
+5. typedef struct {
+6.    char nome[100];
+7.    int numeroConta;
+8.    float saldo;
+9. } ContaBancaria;
+10.
+11. void exibirMenu() {
+12.     printf("\n-------- SIMULADOR DE BANCO --------\n");
+13.     printf("1. Consultar saldo\n");
+14.     printf("2. Fazer depósito\n");
+15.     printf("3. Fazer retirada\n");
+16.     printf("4. Sair\n");
+17.     printf("-----------------------------------\n");
+18.     printf("Escolha uma opção: ");
+19. }
+20.
+void consultarSaldo(ContaBancaria *conta) {
+    printf("\n** Consultando Saldo **\n");
+    printf("Saldo atual de %s (Conta #%d): R$ %.2f\n", conta-&gt;nome, conta-&gt;numeroConta, conta-&gt;saldo);
+}
+
+void fazerDeposito(ContaBancaria *conta) {
+    float valor;
+    printf("\n** Fazer Depósito **\n");
+    printf("Digite o valor a ser depositado: R$ ");
+    scanf("%f", &valor);
+    
+    if (valor &gt; 0) {
+        conta-&gt;saldo += valor;
+        printf("Depósito de R$ %.2f realizado com sucesso!\n", valor);
+    } else {
+        printf("Valor inválido para depósito!\n");
+    }
+}
+
+void fazerRetirada(ContaBancaria *conta) {
+    float valor;
+    printf("\n** Fazer Retirada **\n");
+    printf("Digite o valor a ser retirado: R$ ");
+    scanf("%f", &valor);
+    
+    if (valor &gt; 0 &amp;&amp; valor &lt;= conta-&gt;saldo) {
+        conta-&gt;saldo -= valor;
+        printf("Retirada de R$ %.2f realizada com sucesso!\n", valor);
+    } else {
+        printf("Valor inválido ou saldo insuficiente para a retirada!\n");
+    }
+}
+
+int main() {
+    ContaBancaria conta;
+    
+    printf("Informe o nome do titular da conta: ");
+    fgets(conta.nome, sizeof(conta.nome), stdin);
+    conta.nome[strcspn(conta.nome, "\n")] = '\0';
+
+    printf("Informe o número da conta: ");
+    scanf("%d", &conta.numeroConta);
+    
+    conta.saldo = 0.0f;
+    
+    int tentativa = 0;
+    int escolha;
+
+    do {
+        exibirMenu();
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+            case 1:
+                consultarSaldo(&conta);
+                break;
+            case 2:
+                fazerDeposito(&conta);
+                break;
+            case 3:
+                fazerRetirada(&conta);
+                break;
+            case 4:
+                printf("Saindo... Obrigado por usar o Simulador de Banco!\n");
+                break;
+            default:
+                printf("Opção inválida! Tente novamente.\n");
+                tentativa++;
+                break;
+        }
+
+        if (tentativa &gt;= MAX_TENTATIVAS) {
+            printf("Número máximo de tentativas excedido. Saindo...\n");
+            break;
+        }
+
+    } while (escolha != 4);
+    
+    return 0;
+}
+            </pre>
+
+            <!-- Campos de Entrada -->
+            <div class="input-form">
+                <h3>Teste o Simulador de Banco</h3>
+                <form id="form-simulador">
+                    <label for="nome">Nome do Titular:</label>
+                    <input type="text" id="nome" name="nome" required><br>
+
+                    <label for="numeroConta">Número da Conta:</label>
+                    <input type="number" id="numeroConta" name="numeroConta" required><br>
+
+                    <label for="acao">Escolha a opção:</label>
+                    <select id="acao" name="acao" required>
+                        <option value="1">Consultar Saldo</option>
+                        <option value="2">Fazer Depósito</option>
+                        <option value="3">Fazer Retirada</option>
+                    </select><br>
+
+                    <label for="valor">Valor (se for depósito ou retirada):</label>
+                    <input type="number" id="valor" name="valor"><br>
+
+                    <button type="submit">Submeter</button>
+                </form>
+            </div>
+
+            <div id="resultado"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Matheus Barbosa da Silva - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
