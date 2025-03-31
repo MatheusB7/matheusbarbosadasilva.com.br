@@ -227,32 +227,6 @@ body.dark-mode p {
     main {
         padding-left: 80px;
     }
-
-    header h1 {
-        font-size: 24px;
-    }
-
-    .certificados-container {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .menu-item {
-        width: 60px; /* Reduz a largura dos itens no mobile */
-    }
-
-    nav .menu-item:hover {
-        width: 130px; /* Expande menos no mobile */
-    }
-
-    header .social-icons {
-        top: 10px;
-        right: 10px;
-    }
-
-    header .switch {
-        top: 10px;
-        left: 10px;
-    }
 }
 
 /* Estilos para o link */
