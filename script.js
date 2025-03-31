@@ -27,3 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+function abrirModal(imagem) {
+    var modal = document.getElementById("modal");
+    var modalImg = document.getElementById("imagemModal");
+    modal.style.display = "block";
+    modalImg.src = imagem.src;
+}
+
+function fecharModal() {
+    document.getElementById("modal").style.display = "none";
+}
