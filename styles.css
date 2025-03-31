@@ -227,6 +227,32 @@ body.dark-mode p {
     main {
         padding-left: 80px;
     }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    .certificados-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .menu-item {
+        width: 60px; /* Reduz a largura dos itens no mobile */
+    }
+
+    nav .menu-item:hover {
+        width: 130px; /* Expande menos no mobile */
+    }
+
+    header .social-icons {
+        top: 10px;
+        right: 10px;
+    }
+
+    header .switch {
+        top: 10px;
+        left: 10px;
+    }
 }
 
 /* Estilos para o link */
@@ -258,6 +284,59 @@ body.dark-mode a:active,
 body.dark-mode a:focus {
     color: #5F9EA0; /* Azul escuro no clique no modo escuro */
 }
+
+.certificados-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 70px;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.certificado img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%);
+    transition: transform 0.3s, filter 0.3s;
+    border-radius: 10px;
+}
+
+.certificado img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.45);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    padding-top: 60px;
+}
+
+.modal img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.fechar {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 footer {
     text-align: center;
     padding: 10px;
