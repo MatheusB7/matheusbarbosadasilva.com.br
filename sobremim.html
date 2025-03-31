@@ -55,7 +55,7 @@
     </nav>
 
     <main>
-        <section>
+        <section id="sobremim">
             <h2>Sobre Mim</h2>
             <p>Sou Matheus Barbosa da Silva, tenho 23 anos e nasci em 27 de dezembro de 2001, na cidade de Curitiba - PR. Desde pequeno, sempre tive curiosidade em entender como as coisas funcionavam. Ao invés de brincar com brinquedos, eu gostava de desmontá-los para descobrir seus mecanismos, principalmente carrinhos de controle remoto e bonecos eletrônicos.</p>
             <p>Meu avô, técnico em eletrônica da Philco, tinha uma grande coleção de componentes eletrônicos em casa, como peças de televisores e rádios antigos, o que despertou ainda mais meu interesse pela área. Além disso, meu fascínio por tecnologia começou cedo, quando comecei a explorar no desktop do meu pai, desenhando no Paint e jogando alguns jogos salvos no DVD e nos disquetes.</p>
@@ -67,6 +67,54 @@
             <!-- Foto abaixo do texto -->
             <img src="Images/Foto Perfil.jpg" alt="Foto de Matheus Barbosa da Silva" style="width: 200px; height: auto; display: block; margin: 20px auto;">
         </section>
+        <section id="certificados">
+            <h2>Certificados</h2>
+            <p>Meus certificados e cursos complementares gratuitos que fiz ao longo do tempo.</p>
+            <div class="certificados-container">
+                <div class="certificado">
+                    <img src="Images/IntroducaoPython.jpg" alt="Certificado Introdução à Programação com Python" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/PythonBásico.jpg" alt="Certificado Programação em Python Básico" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/LogicaProgramacao.jpg" alt="Certificado Lógica de Progrmação Essencial" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/CursoJava.png" alt="Certificado de Programação em Java" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/PrimeirosPassosWeb.png" alt="Certificado Primeiros Passos Para Desenvolvimento Web" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/ConhecendoFormaçãodeCibersegurança.png" alt="Certificado Conhecendo a Formação de Cibersegurança" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/Criesitehtml,cssjs.PNG" alt="Certificado Crie um Site Simples Usando HTML, CSS E JavaScript" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/IniciandoCiberseguranca.PNG" alt="Certificado Iniciando no Mundo da Cibersegurança" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/PaginasWeb.PNG" alt="Certificado Páginas Web com HTML" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/FuncoesPython.PNG" alt="Certificado Dominando Funções Python" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/ExcelBasico.PNG" alt="Certificado Excel Básico" onclick="abrirModal(this)">
+                </div>
+                <div class="certificado">
+                    <img src="Images/SemanaEmpregabilidade.PNG" alt="Certificado de Programação Essencial" onclick="abrirModal(this)">
+                </div>
+            </div>
+        </section>
+        
+        <div id="modal" class="modal">
+            <span class="fechar" onclick="fecharModal()">&times;</span>
+            <img class="modal-conteudo" id="imagemModal">
+        </div>
+         
     </main>    
 
     <footer>
