@@ -271,10 +271,6 @@ body.dark-mode a:focus {
 }
 
 /* Certificado */
-.certificado {
-    width: 100%; /* Garante que as divs ocupem toda a largura do grid */
-}
-
 .certificado img {
     width: 100%;
     height: auto;
