@@ -201,6 +201,9 @@ button:disabled { color: var(--suave); cursor: default; transform: none; }
 
 header .botao { flex-shrink: 0; }
 
+a.botao, a.botao:visited { display: inline-block; color: var(--texto); text-decoration: none; }
+a.botao[hidden] { display: none; }
+
 .paginacao { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13px; }
 
 input, select, textarea {
