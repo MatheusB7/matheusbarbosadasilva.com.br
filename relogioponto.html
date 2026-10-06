@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relógio de Ponto</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+  <header>
+    <div class="header-content">
+      <h1>Relógio de Ponto</h1>
+    </div>
+  </header>
+  <main>
+    <section id="programacao">
+      <h2>Programa em C++: Relógio de Ponto</h2>
+      <p>Cadastra funcionários, registra as batidas de entrada e saída, calcula as horas trabalhadas e o saldo de cada dia em relação à jornada de 8 horas e exporta tudo para um arquivo CSV. <a href="Arquivos/relogioponto.cpp" download>Baixar relogioponto.cpp</a></p>
+      <pre>
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;ctime&gt;
+#include &lt;cctype&gt;
+#include &lt;cstdlib&gt;
+#include &lt;limits&gt;
+
+using namespace std;
+
+const int JORNADA = 8 * 60;  // jornada diária em minutos
+
+struct Dia {
+    string data;          // DD/MM/AAAA
+    vector&lt;int&gt; batidas;  // minutos desde 00:00, em ordem
+
+    // Soma os pares entrada/saída do dia
+    int trabalhado() const {
+        int soma = 0;
+        for (size_t i = 0; i + 1 &lt; batidas.size(); i += 2)
+            soma += batidas[i + 1] - batidas[i];
+        return soma;
+    }
+
+    bool incompleto() const { return batidas.size() % 2 != 0; }
+};
+
+string formatarHora(int minutos) {
+    ostringstream saida;
+    saida &lt;&lt; setfill('0') &lt;&lt; setw(2) &lt;&lt; minutos / 60 &lt;&lt; ':' &lt;&lt; setw(2) &lt;&lt; minutos % 60;
+    return saida.str();
+}
+
+string formatarSaldo(int minutos) {
+    return (minutos &lt; 0 ? "-" : "+") + formatarHora(abs(minutos));
+}
+
+bool lerHora(const string&amp; texto, int&amp; minutos) {
+    int h, m;
+    char separador;
+    istringstream entrada(texto);
+    if (!(entrada &gt;&gt; h &gt;&gt; separador &gt;&gt; m) || separador != ':' || h &lt; 0 || h &gt; 23 || m &lt; 0 || m &gt; 59)
+        return false;
+    minutos = h * 60 + m;
+    return true;
+}
+
+bool dataValida(const string&amp; data) {
+    if (data.size() != 10 || data[2] != '/' || data[5] != '/') return false;
+    for (int i = 0; i &lt; 10; i++)
+        if (i != 2 &amp;&amp; i != 5 &amp;&amp; !isdigit((unsigned char)data[i])) return false;
+    int dia = stoi(data.substr(0, 2));
+    int mes = stoi(data.substr(3, 2));
+    return dia &gt;= 1 &amp;&amp; dia &lt;= 31 &amp;&amp; mes &gt;= 1 &amp;&amp; mes &lt;= 12;
+}
+
+void horarioAtual(string&amp; data, int&amp; minutos) {
+    time_t agora = time(nullptr);
+    tm* t = localtime(&amp;agora);
+    char texto[11];
+    strftime(texto, sizeof texto, "%d/%m/%Y", t);
+    data = texto;
+    minutos = t-&gt;tm_hour * 60 + t-&gt;tm_min;
+}
+
+class Funcionario {
+public:
+    Funcionario(int matricula, const string&amp; nome) : matricula(matricula), nome(nome) {}
+
+    int getMatricula() const { return matricula; }
+    const string&amp; getNome() const { return nome; }
+    const vector&lt;Dia&gt;&amp; getDias() const { return dias; }
+
+    // Retorna false se a batida não for depois da última do mesmo dia
+    bool baterPonto(const string&amp; data, int minutos) {
+        for (Dia&amp; d : dias) {
+            if (d.data == data) {
+                if (minutos &lt;= d.batidas.back()) return false;
+                d.batidas.push_back(minutos);
+                return true;
+            }
+        }
+        dias.push_back({data, {minutos}});
+        return true;
+    }
+
+private:
+    int matricula;
+    string nome;
+    vector&lt;Dia&gt; dias;
+};
+
+class RelogioPonto {
+public:
+    bool cadastrar(int matricula, const string&amp; nome) {
+        if (buscar(matricula)) return false;
+        funcionarios.emplace_back(matricula, nome);
+        return true;
+    }
+
+    Funcionario* buscar(int matricula) {
+        for (Funcionario&amp; f : funcionarios)
+            if (f.getMatricula() == matricula) return &amp;f;
+        return nullptr;
+    }
+
+    void espelho(const Funcionario&amp; f) const {
+        cout &lt;&lt; "\nEspelho de ponto - " &lt;&lt; f.getNome() &lt;&lt; " (matrícula " &lt;&lt; f.getMatricula() &lt;&lt; ")\n";
+        cout &lt;&lt; "------------------------------------------------------------\n";
+        int bancoDeHoras = 0;
+        for (const Dia&amp; d : f.getDias()) {
+            cout &lt;&lt; d.data &lt;&lt; "  ";
+            for (int b : d.batidas) cout &lt;&lt; formatarHora(b) &lt;&lt; ' ';
+            if (d.incompleto()) {
+                cout &lt;&lt; " -&gt; falta a batida de saída\n";
+                continue;
+            }
+            int saldo = d.trabalhado() - JORNADA;
+            bancoDeHoras += saldo;
+            cout &lt;&lt; " -&gt; trabalhado " &lt;&lt; formatarHora(d.trabalhado())
+                 &lt;&lt; ", saldo " &lt;&lt; formatarSaldo(saldo) &lt;&lt; '\n';
+        }
+        cout &lt;&lt; "------------------------------------------------------------\n";
+        cout &lt;&lt; "Banco de horas: " &lt;&lt; formatarSaldo(bancoDeHoras) &lt;&lt; '\n';
+    }
+
+    void espelhoGeral() const {
+        if (funcionarios.empty()) {
+            cout &lt;&lt; "Nenhum funcionário cadastrado.\n";
+            return;
+        }
+        for (const Funcionario&amp; f : funcionarios) espelho(f);
+    }
+
+    // Usa ponto e vírgula para abrir direto no Excel em português
+    bool exportarCSV(const string&amp; arquivo) const {
+        ofstream csv(arquivo);
+        if (!csv) return false;
+        csv &lt;&lt; "matricula;nome;data;batidas;trabalhado;saldo\n";
+        for (const Funcionario&amp; f : funcionarios) {
+            for (const Dia&amp; d : f.getDias()) {
+                csv &lt;&lt; f.getMatricula() &lt;&lt; ';' &lt;&lt; f.getNome() &lt;&lt; ';' &lt;&lt; d.data &lt;&lt; ';';
+                for (size_t i = 0; i &lt; d.batidas.size(); i++)
+                    csv &lt;&lt; (i ? " " : "") &lt;&lt; formatarHora(d.batidas[i]);
+                if (d.incompleto())
+                    csv &lt;&lt; ";;incompleto\n";
+                else
+                    csv &lt;&lt; ';' &lt;&lt; formatarHora(d.trabalhado()) &lt;&lt; ';'
+                        &lt;&lt; formatarSaldo(d.trabalhado() - JORNADA) &lt;&lt; '\n';
+            }
+        }
+        return true;
+    }
+
+private:
+    vector&lt;Funcionario&gt; funcionarios;
+};
+
+int lerInteiro(const string&amp; mensagem) {
+    int valor;
+    cout &lt;&lt; mensagem;
+    while (!(cin &gt;&gt; valor)) {
+        cin.clear();
+        cin.ignore(numeric_limits&lt;streamsize&gt;::max(), '\n');
+        cout &lt;&lt; "Digite um número: ";
+    }
+    cin.ignore(numeric_limits&lt;streamsize&gt;::max(), '\n');
+    return valor;
+}
+
+int main() {
+    system("chcp 65001 &gt; nul");
+
+    RelogioPonto relogio;
+    int opcao;
+
+    do {
+        cout &lt;&lt; "\n***************************************************\n";
+        cout &lt;&lt; "                 RELÓGIO DE PONTO\n";
+        cout &lt;&lt; "         Criador: Matheus Barbosa da Silva\n";
+        cout &lt;&lt; "***************************************************\n\n";
+        cout &lt;&lt; "1 - Cadastrar funcionário\n";
+        cout &lt;&lt; "2 - Bater ponto agora\n";
+        cout &lt;&lt; "3 - Lançar batida manual\n";
+        cout &lt;&lt; "4 - Espelho de ponto\n";
+        cout &lt;&lt; "5 - Exportar CSV\n";
+        cout &lt;&lt; "0 - Sair\n\n";
+        opcao = lerInteiro("Opção: ");
+
+        if (opcao == 1) {
+            int matricula = lerInteiro("Matrícula: ");
+            string nome;
+            cout &lt;&lt; "Nome: ";
+            getline(cin, nome);
+            cout &lt;&lt; (relogio.cadastrar(matricula, nome) ? "Funcionário cadastrado.\n" : "Essa matrícula já existe.\n");
+        } else if (opcao == 4) {
+            int matricula = lerInteiro("Matrícula (0 para todos): ");
+            if (matricula == 0)
+                relogio.espelhoGeral();
+            else if (Funcionario* f = relogio.buscar(matricula))
+                relogio.espelho(*f);
+            else
+                cout &lt;&lt; "Funcionário não encontrado.\n";
+        } else if (opcao == 2 || opcao == 3) {
+            Funcionario* f = relogio.buscar(lerInteiro("Matrícula: "));
+            if (!f) {
+                cout &lt;&lt; "Funcionário não encontrado.\n";
+                continue;
+            }
+
+            string data, hora;
+            int minutos;
+            if (opcao == 2) {
+                horarioAtual(data, minutos);
+            } else {
+                cout &lt;&lt; "Data (DD/MM/AAAA): ";
+                getline(cin, data);
+                cout &lt;&lt; "Hora (HH:MM): ";
+                getline(cin, hora);
+                if (!dataValida(data) || !lerHora(hora, minutos)) {
+                    cout &lt;&lt; "Data ou hora inválida.\n";
+                    continue;
+                }
+            }
+
+            if (f-&gt;baterPonto(data, minutos))
+                cout &lt;&lt; "Batida registrada: " &lt;&lt; data &lt;&lt; ' ' &lt;&lt; formatarHora(minutos) &lt;&lt; '\n';
+            else
+                cout &lt;&lt; "A batida precisa ser depois da última do mesmo dia.\n";
+        } else if (opcao == 5) {
+            cout &lt;&lt; (relogio.exportarCSV("ponto.csv") ? "Arquivo ponto.csv gerado.\n" : "Não foi possível criar o arquivo.\n");
+        } else if (opcao != 0) {
+            cout &lt;&lt; "Opção inválida.\n";
+        }
+    } while (opcao != 0);
+
+    return 0;
+}
+</pre>
+
+      <h2>Simulação do Programa</h2>
+      <p>Já vem com uma funcionária de exemplo. Cadastre outros, bata o ponto e veja o espelho.</p>
+
+      <fieldset>
+        <legend>1 - Cadastrar funcionário</legend>
+        <form id="form-cadastro">
+          <label for="matricula">Matrícula:</label><br>
+          <input type="number" id="matricula" min="1" required><br>
+          <label for="nome">Nome:</label><br>
+          <input type="text" id="nome" required><br>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </fieldset>
+
+      <fieldset>
+        <legend>2 e 3 - Bater ponto</legend>
+        <form id="form-ponto">
+          <label for="func-ponto">Funcionário:</label><br>
+          <select id="func-ponto"></select><br>
+          <button type="button" id="bater-agora">Bater ponto agora</button>
+          <p>Ou lance uma batida manual:</p>
+          <label for="data">Data:</label><br>
+          <input type="date" id="data" required><br>
+          <label for="hora">Hora:</label><br>
+          <input type="time" id="hora" required><br>
+          <button type="submit">Lançar batida manual</button>
+        </form>
+      </fieldset>
+
+      <div id="resultado" role="status"></div>
+
+      <fieldset>
+        <legend>4 e 5 - Espelho de ponto</legend>
+        <label for="func-espelho">Funcionário:</label><br>
+        <select id="func-espelho"></select>
+        <div id="espelho"></div>
+        <button type="button" id="exportar">Exportar CSV</button>
+      </fieldset>
+
+      <script>
+        const JORNADA = 8 * 60;
+        const funcionarios = [
+          { matricula: 101, nome: 'Ana Souza', dias: [
+            { data: '06/10/2026', batidas: [8 * 60, 12 * 60, 13 * 60, 17 * 60 + 30] },
+            { data: '07/10/2026', batidas: [8 * 60 + 10, 12 * 60, 13 * 60 + 5, 17 * 60] },
+            { data: '08/10/2026', batidas: [7 * 60 + 55] }
+          ]}
+        ];
+
+        const doisDigitos = n => String(n).padStart(2, '0');
+        const formatarHora = m => doisDigitos(Math.floor(m / 60)) + ':' + doisDigitos(m % 60);
+        const formatarSaldo = m => (m < 0 ? '-' : '+') + formatarHora(Math.abs(m));
+        const trabalhado = d => {
+          let soma = 0;
+          for (let i = 0; i + 1 < d.batidas.length; i += 2) soma += d.batidas[i + 1] - d.batidas[i];
+          return soma;
+        };
+        const incompleto = d => d.batidas.length % 2 !== 0;
+
+        function mensagem(texto) {
+          document.getElementById('resultado').textContent = texto;
+        }
+
+        function buscar(matricula) {
+          return funcionarios.find(f => f.matricula === matricula);
+        }
+
+        function atualizarListas() {
+          for (const id of ['func-ponto', 'func-espelho']) {
+            const select = document.getElementById(id);
+            const atual = select.value;
+            select.innerHTML = '';
+            if (id === 'func-espelho') {
+              const todos = document.createElement('option');
+              todos.value = '';
+              todos.textContent = 'Todos os funcionários';
+              select.appendChild(todos);
+            }
+            for (const f of funcionarios) {
+              const opcao = document.createElement('option');
+              opcao.value = f.matricula;
+              opcao.textContent = f.matricula + ' - ' + f.nome;
+              select.appendChild(opcao);
+            }
+            select.value = atual;
+            if (select.selectedIndex === -1) select.selectedIndex = 0;
+          }
+          mostrarEspelho();
+        }
+
+        function baterPonto(f, data, minutos) {
+          const dia = f.dias.find(d => d.data === data);
+          if (dia) {
+            if (minutos <= dia.batidas[dia.batidas.length - 1]) {
+              mensagem('A batida precisa ser depois da última do mesmo dia.');
+              return;
+            }
+            dia.batidas.push(minutos);
+          } else {
+            f.dias.push({ data, batidas: [minutos] });
+          }
+          mensagem('Batida registrada para ' + f.nome + ': ' + data + ' ' + formatarHora(minutos));
+          mostrarEspelho();
+        }
+
+        const POR_PAGINA = 20;
+        let pagina = 1;
+
+        function mostrarEspelho() {
+          const valor = document.getElementById('func-espelho').value;
+          const todos = valor === '';
+          const lista = todos ? funcionarios : funcionarios.filter(f => f.matricula === Number(valor));
+          const area = document.getElementById('espelho');
+          area.innerHTML = '';
+
+          // Junta os dias de todos os funcionários escolhidos e soma o banco de horas de cada um
+          const registros = [];
+          const bancos = [];
+          for (const f of lista) {
+            if (f.dias.length === 0) continue;
+            let banco = 0;
+            for (const d of f.dias) {
+              registros.push({ f, d });
+              if (!incompleto(d)) banco += trabalhado(d) - JORNADA;
+            }
+            bancos.push(f.nome + ': ' + formatarSaldo(banco));
+          }
+          if (registros.length === 0) {
+            area.textContent = 'Nenhuma batida registrada ainda.';
+            return;
+          }
+
+          const totalPaginas = Math.ceil(registros.length / POR_PAGINA);
+          pagina = Math.min(Math.max(pagina, 1), totalPaginas);
+          const inicio = (pagina - 1) * POR_PAGINA;
+
+          const tabela = document.createElement('table');
+          tabela.className = 'tabela';
+          tabela.innerHTML = '<thead><tr>' + (todos ? '<th scope="col">Funcionário</th>' : '') +
+            '<th scope="col">Data</th><th scope="col">Batidas</th><th scope="col">Trabalhado</th><th scope="col">Saldo</th></tr></thead>';
+          const corpo = document.createElement('tbody');
+          for (const { f, d } of registros.slice(inicio, inicio + POR_PAGINA)) {
+            const linha = corpo.insertRow();
+            if (todos) linha.insertCell().textContent = f.matricula + ' - ' + f.nome;
+            linha.insertCell().textContent = d.data;
+            linha.insertCell().textContent = d.batidas.map(formatarHora).join(' ');
+            if (incompleto(d)) {
+              const celula = linha.insertCell();
+              celula.colSpan = 2;
+              celula.textContent = 'falta a batida de saída';
+            } else {
+              linha.insertCell().textContent = formatarHora(trabalhado(d));
+              linha.insertCell().textContent = formatarSaldo(trabalhado(d) - JORNADA);
+            }
+          }
+          tabela.appendChild(corpo);
+          area.appendChild(tabela);
+
+          const navegacao = document.createElement('p');
+          navegacao.className = 'paginacao';
+          const anterior = document.createElement('button');
+          anterior.type = 'button';
+          anterior.textContent = '« Anterior';
+          anterior.disabled = pagina === 1;
+          anterior.addEventListener('click', () => { pagina--; mostrarEspelho(); });
+          const proxima = document.createElement('button');
+          proxima.type = 'button';
+          proxima.textContent = 'Próxima »';
+          proxima.disabled = pagina === totalPaginas;
+          proxima.addEventListener('click', () => { pagina++; mostrarEspelho(); });
+          const info = document.createElement('span');
+          info.textContent = 'Página ' + pagina + ' de ' + totalPaginas +
+            ' (registros ' + (inicio + 1) + ' a ' + Math.min(inicio + POR_PAGINA, registros.length) + ' de ' + registros.length + ')';
+          navegacao.append(anterior, ' ', info, ' ', proxima);
+          area.appendChild(navegacao);
+
+          const titulo = document.createElement('p');
+          titulo.innerHTML = '<strong>Banco de horas</strong>';
+          area.appendChild(titulo);
+          const resumo = document.createElement('ul');
+          for (const texto of bancos) {
+            const item = document.createElement('li');
+            item.textContent = texto;
+            resumo.appendChild(item);
+          }
+          area.appendChild(resumo);
+        }
+
+        document.getElementById('form-cadastro').addEventListener('submit', function (evento) {
+          evento.preventDefault();
+          const matricula = Number(document.getElementById('matricula').value);
+          const nome = document.getElementById('nome').value.trim();
+          if (!nome) return;
+          if (buscar(matricula)) {
+            mensagem('Essa matrícula já existe.');
+            return;
+          }
+          funcionarios.push({ matricula, nome, dias: [] });
+          this.reset();
+          atualizarListas();
+          document.getElementById('func-ponto').value = matricula;
+          mensagem('Funcionário cadastrado: ' + nome + '.');
+        });
+
+        document.getElementById('bater-agora').addEventListener('click', function () {
+          const f = buscar(Number(document.getElementById('func-ponto').value));
+          if (!f) return;
+          const agora = new Date();
+          const data = doisDigitos(agora.getDate()) + '/' + doisDigitos(agora.getMonth() + 1) + '/' + agora.getFullYear();
+          baterPonto(f, data, agora.getHours() * 60 + agora.getMinutes());
+        });
+
+        document.getElementById('form-ponto').addEventListener('submit', function (evento) {
+          evento.preventDefault();
+          const f = buscar(Number(document.getElementById('func-ponto').value));
+          if (!f) return;
+          const [ano, mes, dia] = document.getElementById('data').value.split('-');
+          const [h, m] = document.getElementById('hora').value.split(':').map(Number);
+          baterPonto(f, dia + '/' + mes + '/' + ano, h * 60 + m);
+        });
+
+        document.getElementById('func-espelho').addEventListener('change', function () {
+          pagina = 1;
+          mostrarEspelho();
+        });
+
+        document.getElementById('exportar').addEventListener('click', function () {
+          let csv = 'matricula;nome;data;batidas;trabalhado;saldo\n';
+          for (const f of funcionarios) {
+            for (const d of f.dias) {
+              csv += f.matricula + ';' + f.nome + ';' + d.data + ';' + d.batidas.map(formatarHora).join(' ');
+              csv += incompleto(d)
+                ? ';;incompleto\n'
+                : ';' + formatarHora(trabalhado(d)) + ';' + formatarSaldo(trabalhado(d) - JORNADA) + '\n';
+            }
+          }
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
+          link.download = 'ponto.csv';
+          link.click();
+          setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+          mensagem('Arquivo ponto.csv gerado.');
+        });
+
+        atualizarListas();
+      </script>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Matheus Barbosa</p>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>

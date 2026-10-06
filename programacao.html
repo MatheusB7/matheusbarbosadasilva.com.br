@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programação - Matheus Barbosa da Silva</title>
-    <meta name="description" content="Programas em C de Matheus Barbosa da Silva, com simulação em JavaScript: combustível, matrizes, forca, banco, roleta e Bhaskara.">
+    <meta name="description" content="Sites do Futebol de Rua e programas em C de Matheus Barbosa da Silva, com simulação em JavaScript: gerador de senhas, combustível, matrizes, forca, banco, roleta e Bhaskara.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="light-mode">
@@ -33,6 +33,9 @@
             <div class="caixa indice">
                 <h3>Nesta página</h3>
                 <ul>
+                    <li><a href="#futebolderua">Sites do Futebol de Rua</a></li>
+                    <li><a href="#geradordesenha">Gerador de Senhas</a></li>
+                    <li><a href="#relogioponto">Relógio de Ponto</a></li>
                     <li><a href="#calculocombustivel">Combustível</a></li>
                     <li><a href="#calculadoramatrizes">Matrizes</a></li>
                     <li><a href="#jogodaforca">Jogo da Forca</a></li>
@@ -54,7 +57,58 @@
         <main>
             <section id="programacao">
                 <h2>Projetos de Programação</h2>
-                <p>Aqui você encontrará sistemas, sites e softwares que desenvolvi ao longo da minha jornada. Cada programa foi escrito em C e tem uma simulação em JavaScript logo abaixo do código, para testar sem precisar compilar.</p>
+                <p>Aqui você encontrará sistemas, sites e softwares que desenvolvi ao longo da minha jornada. Primeiro os sites que estão no ar pelo meu trabalho atual, depois os programas em C e C++. Os mini-projetos têm uma simulação em JavaScript logo abaixo do código, para testar sem precisar compilar.</p>
+            </section>
+
+            <section id="futebolderua" class="projeto">
+                <h2>Sites do Futebol de Rua</h2>
+                <p>Trabalho atualmente no <a href="https://futebolderua.org/" target="_blank" rel="noopener">Futebol de Rua</a>, organização que usa o esporte com a metodologia Fair Play para educação e transformação social. Desde que entrei, a equipe colocou dois sites no ar.</p>
+
+                <h3 id="festival">Festival e Futebol de Rua</h3>
+                <table class="ficha">
+                    <caption>Ficha do projeto</caption>
+                    <tr><th scope="row">Minha parte</th><td>Ligado diretamente ao desenvolvimento</td></tr>
+                    <tr><th scope="row">Tecnologia</th><td>PHP, imagens no Azure Blob Storage</td></tr>
+                    <tr><th scope="row">Situação</th><td>No ar</td></tr>
+                </table>
+                <p>Site dos festivais realizados em vários estados do Brasil. Tem filtro de eventos por estado, cidade e projeto, inscrição de voluntários, acesso do participante pelo CPF para ver os próprios eventos, área administrativa, galeria de fotos, depoimentos e perguntas frequentes.</p>
+                <ul class="documentos">
+                    <li><a href="https://festivalfutebolderua.org/homepage.php" target="_blank" rel="noopener">festivalfutebolderua.org</a></li>
+                </ul>
+
+                <h3 id="portal-patrocinador">Portal do Patrocinador</h3>
+                <p>Portal com acesso por login, feito para os patrocinadores da organização. Foi lançado pela equipe durante o meu período no Futebol de Rua.</p>
+                <ul class="documentos">
+                    <li><a href="https://portal-patrocinador.futebolderua.org/homepage.php" target="_blank" rel="noopener">portal-patrocinador.futebolderua.org</a> <small>(área restrita)</small></li>
+                </ul>
+                <p class="topo-link"><a href="#topo">voltar ao topo</a></p>
+            </section>
+
+            <section id="geradordesenha" class="projeto">
+                <h2>Gerador de Senhas</h2>
+                <table class="ficha">
+                    <caption>Ficha do projeto</caption>
+                    <tr><th scope="row">Linguagem</th><td>C (compilado com MinGW)</td></tr>
+                    <tr><th scope="row">Plataforma</th><td>Windows, funciona offline</td></tr>
+                    <tr><th scope="row">Distribuição</th><td>Site próprio no GitHub Pages</td></tr>
+                </table>
+                <p>Programa para Windows que gera senhas seguras sem precisar de internet. O usuário escolhe entre senha simples ou senha forte e pode salvar a senha gerada direto em um arquivo.</p>
+                <p>Diferente dos outros projetos desta página, este é distribuído como produto: tem uma página de download e um modo Premium, liberado por um código de ativação, que gera senhas mais longas com símbolos e letras maiúsculas.</p>
+                <ul class="documentos">
+                    <li><a href="https://matheusb7.github.io/geradordesenha/" target="_blank" rel="noopener">Página do Gerador de Senhas</a> <small>(download do programa)</small></li>
+                    <li><a href="https://github.com/MatheusB7/geradordesenha" target="_blank" rel="noopener">Repositório no GitHub</a></li>
+                </ul>
+                <p class="topo-link"><a href="#topo">voltar ao topo</a></p>
+            </section>
+
+            <section id="relogioponto">
+                <h2>Relógio de Ponto</h2>
+                <p>Programa em C++ inspirado no meu trabalho com relógios de ponto na Tecnoponto. Cadastra funcionários, registra as batidas de entrada e saída, calcula as horas trabalhadas e o saldo de cada dia em relação à jornada de 8 horas, mostra o espelho de ponto com o banco de horas e exporta tudo em CSV para abrir no Excel. Usa classes, <code>vector</code> e leitura e gravação de arquivos.</p>
+                <div class="janela">
+                    <div class="janela-barra"><span>relogioponto.html</span><a href="relogioponto.html" target="_blank" rel="noopener">abrir em nova aba</a></div>
+                    <iframe src="relogioponto.html" loading="lazy" title="Relógio de Ponto"></iframe>
+                </div>
+                <p class="topo-link"><a href="#topo">voltar ao topo</a></p>
             </section>
 
             <section id="calculocombustivel">

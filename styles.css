@@ -86,6 +86,7 @@ h2 {
 }
 
 h3 { font-size: 16px; margin: 20px 0 6px; color: var(--texto); }
+.projeto h3 { clear: both; }
 
 p { margin: 0 0 12px; max-width: 72ch; }
 
@@ -196,7 +197,11 @@ button:active, .botao:active {
     transform: translate(1px, 1px);
 }
 
+button:disabled { color: var(--suave); cursor: default; transform: none; }
+
 header .botao { flex-shrink: 0; }
+
+.paginacao { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13px; }
 
 input, select, textarea {
     font-family: Verdana, Tahoma, sans-serif;
@@ -212,6 +217,13 @@ input, select, textarea {
 }
 
 label { font-size: 13px; font-weight: bold; }
+
+fieldset {
+    margin: 0 0 16px;
+    padding: 6px 14px 12px;
+    border: 2px groove var(--borda);
+}
+legend { padding: 0 6px; font-weight: bold; font-size: 13px; }
 
 /* ---------- Conteúdo ---------- */
 
