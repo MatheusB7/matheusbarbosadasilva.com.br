@@ -4,142 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programação - Matheus Barbosa da Silva</title>
+    <meta name="description" content="Programas em C de Matheus Barbosa da Silva, com simulação em JavaScript: combustível, matrizes, forca, banco, roleta e Bhaskara.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="light-mode">
-    <!-- Cabeçalho -->
+<div class="pagina" id="topo">
     <header>
-        <div class="header-content">
-            <h1>Matheus Barbosa da Silva</h1>
-            <label class="switch">
-                <input type="checkbox" id="theme-switch">
-                <span class="slider"></span>
-            </label>
+        <div>
+            <h1><a href="index.html">Matheus Barbosa da Silva</a></h1>
+            <p>Engenheiro da Computação / Técnico em Eletrônica</p>
         </div>
-        <!-- Ícone de Menu para dispositivos móveis -->
-<div class="menu-toggle" onclick="toggleMenu()">
-    ☰
-</div>
-
-<!-- Botões de redes sociais -->
-<div class="social-icons">
-    <a href="https://br.linkedin.com/in/matheus-barbosa-da-silva-5681342a2" target="_blank">🔗 LinkedIn</a>
-    <a href="https://github.com/MatheusB7" target="_blank">💻 GitHub</a>
-    <a href="https://www.instagram.com/matheusbarbosas2/" target="_blank">📸 Instagram</a>
-</div>
+        <button type="button" id="theme-switch" class="botao" aria-pressed="false">Modo escuro</button>
     </header>
 
-    <!-- Menu Lateral -->
-    <nav>
-        <ul>
-            <li class="menu-item" id="home">
-                <a href="index.html">
-                    <span class="emoji">🏠</span>
-                    <span class="menu-text">Home</span>
-                </a>
-            </li>
-            <li class="menu-item" id="programacao">
-                <a href="programacao.html">
-                    <span class="emoji">💻</span>
-                    <span class="menu-text">Programação</span>
-                </a>
-            </li>            
-            <li class="menu-item" id="eletronica">
-                <a href="eletronica.html">
-                    <span class="emoji">⚡</span>
-                    <span class="menu-text">Eletrônica</span>
-                </a>
-            </li>
-            <li class="menu-item" id="sobre">
-                <a href="sobremim.html">
-                    <span class="emoji">👤</span>
-                    <span class="menu-text">Sobre Mim</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <div class="trilha">Você está em: <a href="index.html">Início</a> &raquo; Programação</div>
 
-    <!-- Conteúdo Principal -->
-    <main>
-        <section id="programacao">
-            <h2>Projetos de Programação</h2>
-            <p>Aqui você encontrará sistemas, sites e softwares que desenvolvi ao longo da minha jornada.</p>
-            <div id="random-images-programacao" class="image-gallery"></div>
-        
+    <div class="colunas">
+        <aside class="lateral">
+            <div class="caixa">
+                <h3>Navegação</h3>
+                <ul class="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="programacao.html" aria-current="page">Programação</a></li>
+                    <li><a href="eletronica.html">Eletrônica</a></li>
+                    <li><a href="sobremim.html">Sobre mim</a></li>
+                </ul>
+            </div>
+            <div class="caixa indice">
+                <h3>Nesta página</h3>
+                <ul>
+                    <li><a href="#calculocombustivel">Combustível</a></li>
+                    <li><a href="#calculadoramatrizes">Matrizes</a></li>
+                    <li><a href="#jogodaforca">Jogo da Forca</a></li>
+                    <li><a href="#simulador-banco">Simulador de Banco</a></li>
+                    <li><a href="#roleta">Roleta</a></li>
+                    <li><a href="#calculadorabhaskara">Bhaskara</a></li>
+                </ul>
+            </div>
+            <div class="caixa">
+                <h3>Na web</h3>
+                <ul>
+                    <li><a href="https://br.linkedin.com/in/matheus-barbosa-da-silva-5681342a2" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://github.com/MatheusB7" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://www.instagram.com/matheusbarbosas2/" target="_blank" rel="noopener">Instagram</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main>
+            <section id="programacao">
+                <h2>Projetos de Programação</h2>
+                <p>Aqui você encontrará sistemas, sites e softwares que desenvolvi ao longo da minha jornada. Cada programa foi escrito em C e tem uma simulação em JavaScript logo abaixo do código, para testar sem precisar compilar.</p>
+            </section>
+
             <section id="calculocombustivel">
-                <h2>Simulação do Cálculo de Combustível 🚗⛽</h2>
-                <p>Este projeto permite simular o cálculo de eficiência de combustível, comparando o custo do combustível (gasolina e etanol) e a autonomia de um veículo com base nesses combustíveis. É uma ferramenta útil para ajudar motoristas a escolherem o combustível mais econômico em diferentes situações. 💡</p>
-                <iframe src="precocombustivel.html" 
-                    width="600" 
-                    height="400" 
-                    frameborder="0" 
-                    scrolling="auto">
-                </iframe>
+                <h2>Simulação do Cálculo de Combustível</h2>
+                <p>Este projeto permite simular o cálculo de eficiência de combustível, comparando o custo do combustível (gasolina e etanol) e a autonomia de um veículo com base nesses combustíveis. É uma ferramenta útil para ajudar motoristas a escolherem o combustível mais econômico em diferentes situações.</p>
+                <div class="janela">
+                    <div class="janela-barra"><span>precocombustivel.html</span><a href="precocombustivel.html" target="_blank" rel="noopener">abrir em nova aba</a></div>
+                    <iframe src="precocombustivel.html" loading="lazy" title="Simulação do Cálculo de Combustível"></iframe>
+                </div>
+                <p class="topo-link"><a href="#topo">voltar ao topo</a></p>
             </section>
 
             <section id="calculadoramatrizes">
-                <h2>Calculadora de Matrizes 🧮✖️</h2>
-                <p>Esta calculadora realiza operações com matrizes, como soma, subtração e multiplicação. Ela é útil para quem estuda álgebra linear ou precisa realizar operações com matrizes em diversos contextos, como na programação e matemática. 🔢</p>
-                <iframe src="matrizes.html" 
-                    width="600" 
-                    height="400" 
-                    frameborder="0" 
-                    scrolling="auto">
-                </iframe>
+                <h2>Calculadora de Matrizes</h2>
+                <p>Este programa forma matrizes de 1x1 até 4x4 a partir dos valores digitados e calcula a soma de todos os elementos.</p>
+                <div class="janela">
+                    <div class="janela-barra"><span>matrizes.html</span><a href="matrizes.html" target="_blank" rel="noopener">abrir em nova aba</a></div>
+                    <iframe src="matrizes.html" loading="lazy" title="Calculadora de Matrizes"></iframe>
+                </div>
+                <p class="topo-link"><a href="#topo">voltar ao topo</a></p>
             </section>
-            
+
             <section id="jogodaforca">
-                <h2>Jogo da Forca 🤷‍♂️🕹️</h2>
+                <h2>Jogo da Forca</h2>
                 <p>O Jogo da Forca é um clássico jogo de adivinhação de palavras, em português e inglês. O jogador deve tentar adivinhar a palavra secreta, letra por letra, antes de esgotar as tentativas e completar o desenho do boneco.</p>
-                <iframe src="forca.html" 
-                    width="600" 
-                    height="400" 
-                    frameborder="0" 
-                    scrolling="auto">
-                </iframe>
-            </section>            
+                <div class="janela">
+                    <div class="janela-barra"><span>forca.html</span><a href="forca.html" target="_blank" rel="noopener">abrir em nova aba</a></div>
+                    <iframe src="forca.html" loading="lazy" title="Jogo da Forca"></iframe>
+                </div>
+                <p class="topo-link"><a href="#topo">voltar ao topo</a></p>
+            </section>
 
             <section id="simulador-banco">
-                <h2>Simulador de Banco 💰🏦</h2>
-                <p>Este simulador de banco permite que você crie uma conta bancária, consulte o saldo, faça depósitos e retiradas, tudo em C! Uma ótima maneira de aprender sobre programação em C enquanto testa suas habilidades com um banco simples. 🖥️💡</p>
-                <iframe src="SimuladorBanco.html" 
-                    width="600" 
-                    height="400" 
-                    frameborder="0" 
-                    scrolling="auto">
-                </iframe>
+                <h2>Simulador de Banco</h2>
+                <p>Este simulador de banco permite que você crie uma conta bancária, consulte o saldo, faça depósitos e retiradas, tudo em C. Uma ótima maneira de aprender sobre programação em C enquanto testa suas habilidades com um banco simples.</p>
+                <div class="janela">
+                    <div class="janela-barra"><span>SimuladorBanco.html</span><a href="SimuladorBanco.html" target="_blank" rel="noopener">abrir em nova aba</a></div>
+                    <iframe src="SimuladorBanco.html" loading="lazy" title="Simulador de Banco"></iframe>
+                </div>
+                <p class="topo-link"><a href="#topo">voltar ao topo</a></p>
             </section>
 
             <section id="roleta">
-                <h2>Roleta 🎰🎡</h2>
-                <p>Este simulador de roleta permite que você gire a roleta e veja qual opção será sorteada! Uma maneira divertida de aprender a usar programação em C enquanto testa suas habilidades com uma roleta simples. 🖥️💡</p>
-                <iframe src="roleta.html" 
-                    width="600" 
-                    height="400" 
-                    frameborder="0" 
-                    scrolling="auto">
-                </iframe>
+                <h2>Roleta</h2>
+                <p>Este simulador de roleta permite que você gire a roleta e veja qual opção será sorteada. Uma maneira divertida de aprender a usar programação em C enquanto testa suas habilidades com uma roleta simples.</p>
+                <div class="janela">
+                    <div class="janela-barra"><span>roleta.html</span><a href="roleta.html" target="_blank" rel="noopener">abrir em nova aba</a></div>
+                    <iframe src="roleta.html" loading="lazy" title="Roleta"></iframe>
+                </div>
+                <p class="topo-link"><a href="#topo">voltar ao topo</a></p>
             </section>
-            
-            <section id="calculadorabhaskara">
-                <h2>Calculadora da Fórmula de Bhaskara 📐🔢</h2>
-                <p>Esta calculadora resolve equações quadráticas usando a Fórmula de Bhaskara, tudo detalhadamente. Ela é útil para quem estuda álgebra e precisa resolver equações do segundo grau de forma rápida e prática. 🧮</p>
-                <iframe src="bhaskara.html" 
-                    width="600" 
-                    height="400" 
-                    frameborder="0" 
-                    scrolling="auto">
-                </iframe>
-              </section>
-              
 
-        </section>        
-    </main>
+            <section id="calculadorabhaskara">
+                <h2>Calculadora da Fórmula de Bhaskara</h2>
+                <p>Esta calculadora resolve equações quadráticas usando a Fórmula de Bhaskara, tudo detalhadamente. Ela é útil para quem estuda álgebra e precisa resolver equações do segundo grau de forma rápida e prática.</p>
+                <div class="janela">
+                    <div class="janela-barra"><span>bhaskara.html</span><a href="bhaskara.html" target="_blank" rel="noopener">abrir em nova aba</a></div>
+                    <iframe src="bhaskara.html" loading="lazy" title="Calculadora da Fórmula de Bhaskara"></iframe>
+                </div>
+                <p class="topo-link"><a href="#topo">voltar ao topo</a></p>
+            </section>
+        </main>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Matheus Barbosa da Silva - Todos os direitos reservados</p>
+        <p>&copy; 2026 Matheus Barbosa da Silva. Todos os direitos reservados.</p>
+        <p><a href="#topo">Voltar ao topo</a></p>
     </footer>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

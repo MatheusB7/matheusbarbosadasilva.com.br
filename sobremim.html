@@ -4,123 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Mim - Matheus Barbosa da Silva</title>
+    <meta name="description" content="Trajetória e certificados de Matheus Barbosa da Silva, de Curitiba - PR.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="light-mode">
-    <!-- Cabeçalho -->
+<div class="pagina" id="topo">
     <header>
-        <div class="header-content">
-            <h1>Matheus Barbosa da Silva</h1>
-            <label class="switch">
-                <input type="checkbox" id="theme-switch">
-                <span class="slider"></span>
-            </label>
+        <div>
+            <h1><a href="index.html">Matheus Barbosa da Silva</a></h1>
+            <p>Engenheiro da Computação / Técnico em Eletrônica</p>
         </div>
-        <!-- Botões de redes sociais -->
-        <div class="social-icons">
-            <a href="https://br.linkedin.com/in/matheus-barbosa-da-silva-5681342a2" target="_blank">🔗 LinkedIn</a>
-            <a href="https://github.com/MatheusB7" target="_blank">💻 GitHub</a>
-            <a href="https://www.instagram.com/matheusbarbosas2/" target="_blank">📸 Instagram</a>
-        </div>
+        <button type="button" id="theme-switch" class="botao" aria-pressed="false">Modo escuro</button>
     </header>
 
-    <!-- Menu Lateral -->
-    <nav>
-        <ul>
-            <li class="menu-item" id="home">
-                <a href="index.html">
-                    <span class="emoji">🏠</span>
-                    <span class="menu-text">Home</span>
-                </a>
-            </li>
-            <li class="menu-item" id="programacao">
-                <a href="programacao.html">
-                    <span class="emoji">💻</span>
-                    <span class="menu-text">Programação</span>
-                </a>
-            </li>            
-            <li class="menu-item" id="eletronica">
-                <a href="eletronica.html">
-                    <span class="emoji">⚡</span>
-                    <span class="menu-text">Eletrônica</span>
-                </a>
-            </li>
-            <li class="menu-item" id="sobre">
-                <a href="sobremim.html">
-                    <span class="emoji">👤</span>
-                    <span class="menu-text">Sobre Mim</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <div class="trilha">Você está em: <a href="index.html">Início</a> &raquo; Sobre mim</div>
 
-    <main>
-        <section id="sobremim">
-            <h2>Sobre Mim</h2>
-            <p>Sou Matheus Barbosa da Silva, tenho 23 anos e nasci em 27 de dezembro de 2001, na cidade de Curitiba - PR. Desde pequeno, sempre tive curiosidade em entender como as coisas funcionavam. Ao invés de brincar com brinquedos, eu gostava de desmontá-los para descobrir seus mecanismos, principalmente carrinhos de controle remoto e bonecos eletrônicos.</p>
-            <p>Meu avô, técnico em eletrônica da Philco, tinha uma grande coleção de componentes eletrônicos em casa, como peças de televisores e rádios antigos, o que despertou ainda mais meu interesse pela área. Além disso, meu fascínio por tecnologia começou cedo, quando comecei a explorar no desktop do meu pai, desenhando no Paint e jogando alguns jogos salvos no DVD e nos disquetes.</p>
-            <p>Minha mãe percebeu minha inclinação para tecnologia e me incentivou a tentar um curso técnico no ensino médio. Assim, ingressei no Instituto Federal do Paraná (IFPR) em 2017. No início, foi um desafio, pois nunca havia estudado matérias técnicas antes, mas com o tempo me adaptei e concluí o curso.</p>
-            <p>Em 2017, também participei de um projeto de robótica na IFPR, era um <a href="eletronica.html#robo-irrigacao">robô de irrigação inteligente</a>, desenvolvido com projetos Lego, sensores de umidade de solo, relés, GPS e motor. O projeto visava otimizar o consumo de água, com um sistema autônomo que acionava a irrigação apenas quando necessário, baseado nos dados obtidos por sensores, onde eu e meu grupo apresentamos nosso trabalho na feira IFTech e JoCIF.</p>
-            <p>Outro projeto relevante foi desenvolvido no segundo ano do curso, um protótipo de <a href="eletronica.html#esteira-contador">esteira com display contador</a>, utilizando materiais como madeirite PVC, motor de vidro de carro, circuitos integrados 555 e 4026, LEDs infravermelhos e outros componentes eletrônicos.</p>
-            <p>Após esses projetos, descobri meu gosto por programação e comecei a me aprofundar nessa área. Essa descoberta me levou a buscar uma faculdade voltada para algoritmos e programação, e em 2021 iniciei o curso de Engenharia da Computação. Durante a universidade, participei de diversos projetos que ampliaram minha visão sobre a tecnologia. Um dos projetos mais marcantes foi o <a href="eletronica.html#interruptor-palmas">Interruptor por Palmas</a>, no qual desenvolvemos um sistema que permitia ligar e desligar dispositivos eletrônicos com o som de palmas. Outro projeto interessante foi o <a href="eletronica.html#carrinho-policia">Carrinho de Polícia com Cockpit de Ativação Remota</a>, no qual criei um carrinho controlado remotamente com um sistema de cockpit para ativar as funcionalidades, proporcionando uma experiência inovadora de controle e interação.</p>
-    
-            <!-- Foto abaixo do texto -->
-            <img src="Images/Foto Perfil.jpg" alt="Foto de Matheus Barbosa da Silva" style="width: 200px; height: auto; display: block; margin: 20px auto;">
-        </section>
-        <section id="certificados">
-            <h2>Certificados</h2>
-            <p>Meus certificados e cursos complementares gratuitos que fiz ao longo do tempo.</p>
-            <div class="certificados-container">
-                <div class="certificado">
-                    <img src="Images/IntroducaoPython.jpg" alt="Certificado Introdução à Programação com Python" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/PythonBásico.jpg" alt="Certificado Programação em Python Básico" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/LogicaProgramacao.jpg" alt="Certificado Lógica de Progrmação Essencial" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/CursoJava.png" alt="Certificado de Programação em Java" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/PrimeirosPassosWeb.png" alt="Certificado Primeiros Passos Para Desenvolvimento Web" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/ConhecendoFormaçãodeCibersegurança.png" alt="Certificado Conhecendo a Formação de Cibersegurança" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/Criesitehtml,cssjs.PNG" alt="Certificado Crie um Site Simples Usando HTML, CSS E JavaScript" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/IniciandoCiberseguranca.PNG" alt="Certificado Iniciando no Mundo da Cibersegurança" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/PaginasWeb.PNG" alt="Certificado Páginas Web com HTML" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/FuncoesPython.PNG" alt="Certificado Dominando Funções Python" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/ExcelBasico.PNG" alt="Certificado Excel Básico" onclick="abrirModal(this)">
-                </div>
-                <div class="certificado">
-                    <img src="Images/SemanaEmpregabilidade.PNG" alt="Certificado de Programação Essencial" onclick="abrirModal(this)">
-                </div>
+    <div class="colunas">
+        <aside class="lateral">
+            <div class="caixa">
+                <h3>Navegação</h3>
+                <ul class="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="programacao.html">Programação</a></li>
+                    <li><a href="eletronica.html">Eletrônica</a></li>
+                    <li><a href="sobremim.html" aria-current="page">Sobre mim</a></li>
+                </ul>
             </div>
-        </section>
-        
-        <div id="modal" class="modal">
-            <span class="fechar" onclick="fecharModal()">&times;</span>
-            <img class="modal-conteudo" id="imagemModal">
-        </div>
-         
-    </main>    
+            <div class="caixa indice">
+                <h3>Nesta página</h3>
+                <ul>
+                    <li><a href="#sobremim">Trajetória</a></li>
+                    <li><a href="#certificados">Certificados</a></li>
+                </ul>
+            </div>
+            <div class="caixa">
+                <h3>Na web</h3>
+                <ul>
+                    <li><a href="https://br.linkedin.com/in/matheus-barbosa-da-silva-5681342a2" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://github.com/MatheusB7" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://www.instagram.com/matheusbarbosas2/" target="_blank" rel="noopener">Instagram</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main>
+            <section id="sobremim" class="limpa">
+                <h2>Sobre Mim</h2>
+                <figure class="foto-direita">
+                    <img src="Images/foto-perfil.jpg" alt="Foto de Matheus Barbosa da Silva">
+                    Curitiba - PR
+                </figure>
+                <p>Sou Matheus Barbosa da Silva e nasci em Curitiba - PR. Desde pequeno, sempre tive curiosidade em entender como as coisas funcionavam. Ao invés de brincar com brinquedos, eu gostava de desmontá-los para descobrir seus mecanismos, principalmente carrinhos de controle remoto e bonecos eletrônicos.</p>
+                <p>Meu avô, técnico em eletrônica da Philco, tinha uma grande coleção de componentes eletrônicos em casa, como peças de televisores e rádios antigos, o que despertou ainda mais meu interesse pela área. Além disso, meu fascínio por tecnologia começou cedo, quando comecei a explorar no desktop do meu pai, desenhando no Paint e jogando alguns jogos salvos no DVD e nos disquetes.</p>
+                <p>Minha mãe percebeu minha inclinação para tecnologia e me incentivou a tentar um curso técnico no ensino médio. Assim, ingressei no Instituto Federal do Paraná (IFPR) em 2017. No início, foi um desafio, pois nunca havia estudado matérias técnicas antes, mas com o tempo me adaptei e concluí o curso.</p>
+                <p>Em 2017, também participei de um projeto de robótica no IFPR, um <a href="eletronica.html#robo-irrigacao">robô de irrigação inteligente</a>, desenvolvido com peças Lego, sensores de umidade de solo, relés, GPS e motor. O projeto visava otimizar o consumo de água, com um sistema autônomo que acionava a irrigação apenas quando necessário, baseado nos dados obtidos por sensores. Eu e meu grupo apresentamos o trabalho na feira IFTech e JoCIF.</p>
+                <p>Outro projeto relevante foi desenvolvido no segundo ano do curso, um protótipo de <a href="eletronica.html#esteira-contador">esteira com display contador</a>, utilizando materiais como madeirite, PVC, motor de vidro de carro, circuitos integrados 555 e 4026, LEDs infravermelhos e outros componentes eletrônicos.</p>
+                <p>Após esses projetos, descobri meu gosto por programação e comecei a me aprofundar nessa área. Essa descoberta me levou a buscar uma faculdade voltada para algoritmos e programação, e em 2021 iniciei o curso de Engenharia da Computação. Durante a universidade, participei de diversos projetos que ampliaram minha visão sobre a tecnologia. Um dos mais marcantes foi o <a href="eletronica.html#interruptor-palmas">Interruptor por Palmas</a>, no qual desenvolvemos um sistema que permitia ligar e desligar dispositivos eletrônicos com o som de palmas. Outro foi o <a href="eletronica.html#carrinho-policia">Carrinho de Polícia com Cockpit de Ativação Remota</a>, um carrinho controlado remotamente com um cockpit para ativar as funcionalidades.</p>
+            </section>
+
+            <section id="certificados">
+                <h2>Certificados</h2>
+                <p>Meus certificados e cursos complementares gratuitos que fiz ao longo do tempo. Clique em um certificado para ampliar.</p>
+                <div class="certificados-container">
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/introducaopython.jpg" alt="Certificado Introdução à Programação com Python" onclick="abrirModal(this)">
+                        <figcaption>Introdução à Programação com Python</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/pythonbasico.jpg" alt="Certificado Programação em Python Básico" onclick="abrirModal(this)">
+                        <figcaption>Programação em Python Básico</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/logicaprogramacao.jpg" alt="Certificado Lógica de Programação Essencial" onclick="abrirModal(this)">
+                        <figcaption>Lógica de Programação Essencial</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/cursojava.png" alt="Certificado de Programação em Java" onclick="abrirModal(this)">
+                        <figcaption>Programação em Java</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/primeirospassosweb.png" alt="Certificado Primeiros Passos Para Desenvolvimento Web" onclick="abrirModal(this)">
+                        <figcaption>Primeiros Passos para Desenvolvimento Web</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/conhecendoformacaodeciberseguranca.png" alt="Certificado Conhecendo a Formação de Cibersegurança" onclick="abrirModal(this)">
+                        <figcaption>Conhecendo a Formação de Cibersegurança</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/criesitehtml-cssjs.png" alt="Certificado Crie um Site Simples Usando HTML, CSS e JavaScript" onclick="abrirModal(this)">
+                        <figcaption>Crie um Site Simples Usando HTML, CSS e JavaScript</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/iniciandociberseguranca.png" alt="Certificado Iniciando no Mundo da Cibersegurança" onclick="abrirModal(this)">
+                        <figcaption>Iniciando no Mundo da Cibersegurança</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/paginasweb.png" alt="Certificado Páginas Web com HTML" onclick="abrirModal(this)">
+                        <figcaption>Páginas Web com HTML</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/funcoespython.png" alt="Certificado Dominando Funções Python" onclick="abrirModal(this)">
+                        <figcaption>Dominando Funções Python</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/excelbasico.png" alt="Certificado Excel Básico" onclick="abrirModal(this)">
+                        <figcaption>Excel Básico</figcaption>
+                    </figure>
+                    <figure class="certificado">
+                        <img loading="lazy" src="Images/semanaempregabilidade.png" alt="Certificado Semana da Empregabilidade" onclick="abrirModal(this)">
+                        <figcaption>Semana da Empregabilidade</figcaption>
+                    </figure>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Matheus Barbosa da Silva - Todos os direitos reservados</p>
+        <p>&copy; 2026 Matheus Barbosa da Silva. Todos os direitos reservados.</p>
+        <p><a href="#topo">Voltar ao topo</a></p>
     </footer>
+</div>
 
-    <script src="script.js"></script>
+<div id="modal" class="modal" onclick="fecharModal()">
+    <button type="button" class="fechar" onclick="fecharModal()">Fechar [x]</button>
+    <img id="imagemModal" alt="">
+    <p id="legendaModal"></p>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

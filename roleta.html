@@ -20,31 +20,31 @@
 
             <!-- Exibição do código -->
             <pre>
-1. #include &lt;stdio.h&gt;
-2. #include &lt;stdlib.h&gt;
-3. #include &lt;time.h&gt;
-4.
-5. void girarRoleta(char* opcoes[], int numOpcoes) {
-6.     int sorteado = rand() % numOpcoes;
-7.     printf("A roleta parou em: %s\n", opcoes[sorteado]);
-8. }
-9.
-10. int main() {
-11.     int numOpcoes;
-12.     printf("Quantas opções deseja na roleta? ");
-13.     scanf("%d", &numOpcoes);
-14.     
-15.     char* opcoes[numOpcoes];
-16.     printf("Digite as opções:\n");
-17.     for (int i = 0; i &lt; numOpcoes; i++) {
-18.         scanf("%s", opcoes[i]);
-19.     }
-20.     
-21.     srand(time(NULL));
-22.     girarRoleta(opcoes, numOpcoes);
-23.     
-24.     return 0;
-25. }
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+void girarRoleta(char opcoes[][50], int numOpcoes) {
+    int sorteado = rand() % numOpcoes;
+    printf("A roleta parou em: %s\n", opcoes[sorteado]);
+}
+
+int main() {
+    int numOpcoes;
+    printf("Quantas opções deseja na roleta? ");
+    scanf("%d", &amp;numOpcoes);
+    
+    char opcoes[numOpcoes][50];
+    printf("Digite as opções:\n");
+    for (int i = 0; i &lt; numOpcoes; i++) {
+        scanf("%s", opcoes[i]);
+    }
+    
+    srand(time(NULL));
+    girarRoleta(opcoes, numOpcoes);
+    
+    return 0;
+}
             </pre>
 
             <!-- Simulação da roleta -->
@@ -66,31 +66,11 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Matheus Barbosa da Silva - Todos os direitos reservados</p>
+        <p>&copy; 2026 Matheus Barbosa da Silva - Todos os direitos reservados</p>
     </footer>
 
-    <script>
-        document.getElementById('form-roleta').addEventListener('submit', function(event) {
-            event.preventDefault();
+    <script src="roleta.js"></script>
 
-            // Obter o número de opções e as opções inseridas pelo usuário
-            const numOpcoes = document.getElementById('opcoes').value;
-            const opcoesText = document.getElementById('opcao').value.trim();
-            const opcoes = opcoesText.split('\n');
-
-            if (opcoes.length !== parseInt(numOpcoes)) {
-                alert("O número de opções não corresponde ao valor informado.");
-                return;
-            }
-
-            // Função para gerar um número aleatório com melhor distribuição
-            const sorteado = Math.floor(Math.random() * opcoes.length);
-
-            // Exibir o resultado
-            const resultadoDiv = document.getElementById('resultado');
-            resultadoDiv.innerHTML = `<p>A roleta parou em: <strong>${opcoes[sorteado]}</strong></p>`;
-        });
-    </script>
-
+<script src="script.js"></script>
 </body>
 </html>

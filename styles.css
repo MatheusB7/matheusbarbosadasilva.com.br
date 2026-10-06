@@ -1,326 +1,486 @@
-/* Estilos gerais */
+/* Tema: página pessoal no estilo dos anos 2000.
+   Georgia e Verdana foram as fontes feitas para tela na época; nada é carregado de fora. */
+
+:root {
+    --fundo: #c3c9d2;
+    --fundo-listra: #ccd1d9;
+    --papel: #fcfcfb;
+    --texto: #222428;
+    --suave: #555a63;
+    --marca: #1f3b66;
+    --marca-linha: #4f6fa3;
+    --marca-texto: #f2f5fa;
+    --marca-sub: #c3cfe4;
+    --titulo: #1f3b66;
+    --link: #0a49a3;
+    --link-visitado: #5b2d8e;
+    --borda: #9aa3b2;
+    --borda-clara: #d3d8e0;
+    --faixa: #e8ebf0;
+    --caixa-a: #eef1f5;
+    --caixa-b: #d5dbe4;
+    --linha-par: #f1f3f6;
+    --nota: #eef3fb;
+    --nota-borda: #9fb3d6;
+    --botao: #e3e6eb;
+    --bisel-claro: #ffffff;
+    --bisel-escuro: #6b7280;
+    --codigo-fundo: #f4f5f7;
+    --codigo-texto: #1d2733;
+}
+
+body.dark-mode {
+    --fundo: #14161a;
+    --fundo-listra: #181b20;
+    --papel: #1f2228;
+    --texto: #dcdde0;
+    --suave: #a6abb4;
+    --marca: #142a4d;
+    --marca-linha: #3a5684;
+    --marca-texto: #eef1f6;
+    --marca-sub: #a9b8d3;
+    --titulo: #b9cdf0;
+    --link: #8db4ff;
+    --link-visitado: #c5a8f5;
+    --borda: #3d4350;
+    --borda-clara: #30353f;
+    --faixa: #262a31;
+    --caixa-a: #2d323b;
+    --caixa-b: #252930;
+    --linha-par: #24282f;
+    --nota: #1c2a40;
+    --nota-borda: #3a5684;
+    --botao: #30353e;
+    --bisel-claro: #4c5360;
+    --bisel-escuro: #0d0f12;
+    --codigo-fundo: #171a1f;
+    --codigo-texto: #d6dce6;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Tema Claro */
-body.light-mode {
-    background-color: #f4f7fc;
-    color: #333;
-}
-
-/* Tema Escuro */
-body.dark-mode {
-    background-color: #121212;
-    color: #f0f0f0;
-}
-
-/* Ajuste para textos específicos no tema escuro */
-body.dark-mode .highlight-text {
-    color: white;
-}
-
-/* Cabeçalho */
-header {
-    background-color: #1c1c1c; /* Escuro elegante */
-    color: white;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Posicionamento do título */
-header h1 {
-    font-size: 32px;
-    margin: 0;
-    text-align: center;
-}
-
-/* Botões de redes sociais no canto superior direito */
-header .social-icons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 15px;
-}
-
-header .social-icons a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-header .social-icons a:hover {
-    text-decoration: underline;
-}
-
-/* Switch de tema */
-header .switch {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-}
-
-header .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-header .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 50px;
-}
-
-header .slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    left: 4px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
-}
-
-header input:checked + .slider {
-    background-color: #007BFF;
-}
-
-header input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-/* Menu Lateral */
-nav {
-    position: fixed;
-    top: 130px; /* 50px para baixo */
-    left: 0;
-    width: 70px; /* Largura inicial */
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-    transition: width 0.3s ease;
-    z-index: 5;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav .menu-item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Alinha os itens à esquerda */
-    position: relative;
-    cursor: pointer;
-    padding-left: 10px; /* Espaçamento à esquerda */
-    width: 70px; /* Largura inicial */
-    transition: width 0.3s ease; /* Animar a expansão */
-}
-
-/* Removendo o sublinhado azul dos emojis */
-nav .menu-item a {
-    text-decoration: none;
-    color: white; /* Cor do texto do emoji */
-}
-
-nav .emoji {
-    font-size: 30px;
-    transition: color 0.3s ease; /* Adicionando transição para cor */
-    margin-right: 10px; /* Espaçamento entre emoji e nome */
-}
-
-nav .menu-item:hover .emoji {
-    transform: scale(1.2);
-    color: #FF6347; /* Cor do emoji ao passar o mouse */
-}
-
-/* Nome que aparece dentro do retângulo do menu */
-nav .menu-text {
-    display: none; /* Inicialmente escondido */
-    background-color: #333;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
+    padding: 24px 16px;
+    background-color: var(--fundo);
+    background-image: repeating-linear-gradient(45deg, var(--fundo) 0 3px, var(--fundo-listra) 3px 6px);
+    color: var(--texto);
+    font-family: Verdana, Tahoma, Geneva, sans-serif;
     font-size: 14px;
+    line-height: 1.6;
+}
+
+img, video { max-width: 100%; height: auto; }
+
+h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; line-height: 1.25; }
+
+h2 {
+    color: var(--titulo);
+    font-size: 22px;
+    font-weight: bold;
+    margin: 28px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--borda);
+}
+
+h3 { font-size: 16px; margin: 20px 0 6px; color: var(--texto); }
+
+p { margin: 0 0 12px; max-width: 72ch; }
+
+a { color: var(--link); text-decoration: underline; }
+a:visited { color: var(--link-visitado); }
+a:hover { text-decoration: none; background: var(--nota); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px dotted var(--link);
+    outline-offset: 2px;
+}
+
+hr { border: 0; border-top: 1px solid var(--borda); margin: 24px 0; }
+
+/* ---------- Estrutura das páginas principais ---------- */
+
+.pagina {
+    max-width: 980px;
+    margin: 0 auto;
+    background: var(--papel);
+    border: 1px solid var(--borda);
+    box-shadow: 4px 4px 0 rgba(30, 40, 60, 0.18);
+}
+
+header {
+    background: var(--marca);
+    color: var(--marca-texto);
+    border-bottom: 3px solid var(--marca-linha);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+header h1 { margin: 0; font-size: 30px; font-weight: normal; letter-spacing: 0.5px; }
+header h1 a, header h1 a:visited { color: var(--marca-texto); text-decoration: none; }
+header h1 a:hover { background: none; text-decoration: underline; }
+header p { margin: 2px 0 0; color: var(--marca-sub); font-size: 13px; }
+
+.trilha {
+    background: var(--faixa);
+    border-bottom: 1px solid var(--borda);
+    padding: 5px 22px;
+    font-size: 12px;
+    color: var(--suave);
+}
+
+.colunas {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 24px;
+    padding: 20px 22px 28px;
+}
+
+.colunas > main { min-width: 0; }
+.colunas > main > section:first-child > h2:first-child { margin-top: 0; }
+
+/* ---------- Menu lateral em caixas ---------- */
+
+.caixa {
+    border: 1px solid var(--borda);
+    margin-bottom: 16px;
+    background: var(--papel);
+    font-size: 13px;
+}
+
+.caixa h3 {
+    margin: 0;
+    padding: 4px 8px;
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    background: linear-gradient(var(--caixa-a), var(--caixa-b));
+    border-bottom: 1px solid var(--borda);
+}
+
+.caixa ul { list-style: none; margin: 0; padding: 6px 0; }
+.caixa li a { display: block; padding: 3px 10px; }
+.caixa li a::before { content: "\00BB\00A0"; color: var(--suave); }
+
+.menu a, .menu a:visited { color: var(--link); }
+.menu a[aria-current="page"] {
+    font-weight: bold;
+    color: var(--texto);
+    text-decoration: none;
+    background: var(--nota);
+}
+
+.caixa p { margin: 0; padding: 8px 10px; font-size: 12px; color: var(--suave); }
+
+/* ---------- Botões e formulários com relevo ---------- */
+
+button, .botao {
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 13px;
+    padding: 4px 14px;
+    color: var(--texto);
+    background: var(--botao);
+    border: 2px solid;
+    border-color: var(--bisel-claro) var(--bisel-escuro) var(--bisel-escuro) var(--bisel-claro);
+    border-radius: 0;
+    cursor: pointer;
     white-space: nowrap;
 }
 
-/* Expandindo o retângulo e exibindo o nome ao passar o mouse */
-nav .menu-item:hover {
-    width: 150px; /* Expande a largura do item */
+button:active, .botao:active {
+    border-color: var(--bisel-escuro) var(--bisel-claro) var(--bisel-claro) var(--bisel-escuro);
+    transform: translate(1px, 1px);
 }
 
-nav .menu-item:hover .menu-text {
-    display: block; /* Exibe o nome quando o mouse passar */
+header .botao { flex-shrink: 0; }
+
+input, select, textarea {
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 14px;
+    padding: 4px 6px;
+    margin: 4px 0 12px;
+    max-width: 100%;
+    color: var(--texto);
+    background: var(--papel);
+    border: 2px solid;
+    border-color: var(--bisel-escuro) var(--bisel-claro) var(--bisel-claro) var(--bisel-escuro);
+    border-radius: 0;
 }
 
-/* Conteúdo Principal */
-main {
-    padding: 120px 20px 20px 90px;
-    max-width: 1200px;
-    margin: 0 auto;
-    transition: padding 0.3s ease;
+label { font-size: 13px; font-weight: bold; }
+
+/* ---------- Conteúdo ---------- */
+
+.foto-direita {
+    float: right;
+    width: 200px;
+    margin: 4px 0 12px 20px;
+    padding: 4px;
+    border: 1px solid var(--borda);
+    background: var(--faixa);
+    text-align: center;
+    font-size: 11px;
+    color: var(--suave);
 }
+.foto-direita img { display: block; width: 100%; border: 1px solid var(--borda); margin-bottom: 4px; }
 
-main section {
-    margin-bottom: 50px;
+.limpa::after { content: ""; display: block; clear: both; }
+
+table.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    border: 1px solid var(--borda);
+    margin: 8px 0 4px;
 }
-
-main h2 {
-    font-size: 28px;
-    color: #007BFF;
-    margin-bottom: 10px;
+.tabela th {
+    text-align: left;
+    padding: 5px 8px;
+    background: linear-gradient(var(--caixa-a), var(--caixa-b));
+    border: 1px solid var(--borda);
 }
+.tabela td { padding: 5px 8px; border: 1px solid var(--borda-clara); vertical-align: top; }
+.tabela tr:nth-child(even) td { background: var(--linha-par); }
+.tabela td:first-child { white-space: nowrap; }
 
-main p {
-    font-size: 18px;
-    color: #555;
+.lista-projetos { list-style: none; padding: 0; margin: 8px 0; }
+.lista-projetos li {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--borda);
 }
-
-/* Ajuste para parágrafos específicos */
-main p.highlight-text {
-    color: #555;
+.lista-projetos li:last-child { border-bottom: 0; }
+.lista-projetos img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border: 1px solid var(--borda);
+    padding: 2px;
+    background: var(--faixa);
+    display: block;
 }
+.lista-projetos strong a { font-family: Georgia, serif; font-size: 16px; }
+.lista-projetos p { margin: 2px 0 0; font-size: 13px; }
+.lista-projetos .ano { color: var(--suave); font-size: 12px; }
 
-body.dark-mode p {
-    color: white !important;
+.ficha {
+    float: right;
+    width: 240px;
+    margin: 0 0 14px 20px;
+    border-collapse: collapse;
+    font-size: 12px;
+    border: 1px solid var(--borda);
+    background: var(--faixa);
 }
-
-/* Responsividade */
-@media (max-width: 768px) {
-    nav {
-        position: absolute;
-        left: 10px;
-        top: 100px;
-        width: 60px;
-    }
-
-    main {
-        padding-left: 80px;
-    }
+.ficha caption {
+    font-weight: bold;
+    text-align: left;
+    padding: 4px 8px;
+    background: linear-gradient(var(--caixa-a), var(--caixa-b));
+    border: 1px solid var(--borda);
+    border-bottom: 0;
 }
+.ficha th, .ficha td { padding: 4px 8px; text-align: left; vertical-align: top; border-top: 1px solid var(--borda-clara); }
+.ficha th { width: 40%; color: var(--suave); font-weight: normal; }
 
-/* Estilos para o link */
-a {
-    color: #1faddd; /* Azul claro */
-    text-decoration: none;
-    transition: color 0.3s ease;
+.projeto { overflow: hidden; }
+
+ul.duas-colunas { columns: 2; column-gap: 32px; padding-left: 20px; margin: 4px 0 12px; max-width: 640px; }
+ul.duas-colunas li { break-inside: avoid; list-style: square; }
+
+.fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+    margin: 8px 0 14px;
+    clear: both;
 }
-
-a:hover {
-    color: #007efc; /* Azul médio quando passar o mouse */
+.fotos figure {
+    margin: 0;
+    padding: 4px;
+    border: 1px solid var(--borda);
+    background: var(--faixa);
 }
-
-a:active,
-a:focus {
-    color: #00008B; /* Azul escuro após o clique */
+.fotos img {
+    display: block;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border: 1px solid var(--borda);
+    cursor: zoom-in;
 }
+.fotos figcaption { font-size: 11px; color: var(--suave); padding: 4px 2px 0; line-height: 1.4; }
 
-/* Estilos para links no modo escuro */
-body.dark-mode a {
-    color: #87CEEB; /* Azul claro no modo escuro */
+.videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin: 8px 0 14px;
 }
+.videos video { width: 100%; border: 1px solid var(--borda); background: #0d0f12; display: block; }
 
-body.dark-mode a:hover {
-    color: #4682B4; /* Azul médio no hover no modo escuro */
+.documentos { padding-left: 20px; margin: 4px 0 12px; }
+.documentos li { list-style: square; }
+.documentos small { color: var(--suave); }
+
+.topo-link { text-align: right; font-size: 11px; margin: 4px 0 0; max-width: none; }
+
+/* Janela que envolve cada programa embutido */
+.janela {
+    border: 2px solid;
+    border-color: var(--bisel-claro) var(--bisel-escuro) var(--bisel-escuro) var(--bisel-claro);
+    background: var(--botao);
+    margin: 10px 0 6px;
 }
-
-body.dark-mode a:active,
-body.dark-mode a:focus {
-    color: #5F9EA0; /* Azul escuro no clique no modo escuro */
+.janela-barra {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 3px 8px;
+    background: var(--marca);
+    color: var(--marca-texto);
+    font-size: 12px;
+    font-family: 'Courier New', Consolas, monospace;
 }
+.janela-barra a, .janela-barra a:visited { color: var(--marca-sub); font-family: Verdana, sans-serif; font-size: 11px; }
+.janela-barra a:hover { background: none; color: var(--marca-texto); }
+.janela iframe { display: block; width: 100%; height: 650px; border: 0; background: var(--papel); }
 
-/* Container dos certificados */
+/* Certificados */
 .certificados-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta as colunas automaticamente */
-    gap: 20px;
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 10px 0;
 }
-
-/* Certificado */
+.certificado {
+    margin: 0;
+    padding: 4px;
+    border: 1px solid var(--borda);
+    background: var(--faixa);
+}
 .certificado img {
+    display: block;
     width: 100%;
-    height: auto;
-    filter: grayscale(100%);
-    transition: transform 0.3s, filter 0.3s;
-    border-radius: 10px;
-    object-fit: cover; /* Garante que a imagem cubra o espaço da célula */
+    height: 115px;
+    object-fit: cover;
+    object-position: top;
+    border: 1px solid var(--borda);
+    cursor: zoom-in;
 }
+.certificado figcaption { font-size: 11px; color: var(--suave); padding: 4px 2px 0; line-height: 1.4; }
 
-/* Efeito ao passar o mouse */
-.certificado img:hover {
-    filter: grayscale(0%);
-    transform: scale(1.05); /* Leve aumento no zoom */
-}
-
-/* Modal (janela de visualização expandida) */
+/* Visualizador de imagem */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    inset: 0;
+    z-index: 100;
+    background: rgba(10, 12, 16, 0.88);
+    padding: 48px 16px 16px;
     text-align: center;
-    padding-top: 60px;
 }
-
-.modal img {
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 10px;
-}
-
+.modal img { max-width: 92%; max-height: 82vh; border: 4px solid var(--papel); background: var(--papel); }
+.modal p { color: #e6e8ec; font-size: 13px; margin: 8px auto 0; }
 .fechar {
     position: absolute;
-    top: 15px;
-    right: 35px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
+    top: 12px;
+    right: 16px;
 }
 
 footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    position: relative;
-    width: 100%;
+    border-top: 1px solid var(--borda);
+    background: var(--faixa);
+    padding: 10px 22px;
+    font-size: 11px;
+    color: var(--suave);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+}
+footer p { margin: 0; }
+
+/* ---------- Páginas dos programas (abertas sozinhas ou dentro da janela) ---------- */
+
+body > header { max-width: 980px; margin: 0 auto; }
+body > header h1 { font-size: 24px; }
+body > main {
+    display: block;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 4px 22px 20px;
+    background: var(--papel);
+    border: 1px solid var(--borda);
+    border-top: 0;
+}
+body > footer { max-width: 980px; margin: 0 auto; border: 1px solid var(--borda); border-top: 0; }
+
+pre {
+    background: var(--codigo-fundo);
+    color: var(--codigo-texto);
+    border: 1px solid var(--borda);
+    border-left: 4px solid var(--marca-linha);
+    padding: 12px 14px;
+    overflow-x: auto;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.45;
+    max-height: 420px;
+}
+
+.results, #resultado, .game-container {
+    margin-top: 16px;
+}
+.results, #resultado:not(:empty) {
+    padding: 10px 14px;
+    background: var(--nota);
+    border: 1px solid var(--nota-borda);
+}
+.results h3 { margin-top: 0; }
+
+.input-form h3 { margin-top: 18px; }
+.word-display { font-family: 'Courier New', monospace; font-size: 28px; letter-spacing: 4px; margin: 12px 0; }
+.drawing { white-space: pre; font-family: 'Courier New', monospace; }
+.hint { font-style: italic; }
+
+/* ---------- Telas pequenas ---------- */
+
+@media (max-width: 760px) {
+    body { padding: 0; background: var(--papel); }
+    .pagina { border: 0; box-shadow: none; }
+    header { flex-direction: column; align-items: flex-start; padding: 14px 16px; }
+    header h1 { font-size: 24px; }
+    .trilha { padding: 5px 16px; }
+    .colunas { display: flex; flex-direction: column; gap: 0; padding: 14px 16px 22px; }
+    .lateral { display: contents; }
+    .lateral .caixa { order: 2; }
+    .lateral .caixa:first-child { order: 0; }
+    .colunas > main { order: 1; }
+    .lateral .indice { display: none; }
+    .menu { display: flex; flex-wrap: wrap; }
+    .menu li a { padding: 4px 10px; }
+    .lateral .caixa:last-child { margin-top: 20px; margin-bottom: 0; }
+    .foto-direita { width: 130px; margin: 2px 0 10px 14px; }
+    .ficha { float: none; width: 100%; margin: 0 0 14px; }
+    ul.duas-colunas { columns: 1; }
+    .lista-projetos li { grid-template-columns: 88px 1fr; gap: 10px; }
+    .lista-projetos img { width: 88px; height: 70px; }
+    .tabela td:first-child { white-space: normal; }
+    .janela iframe { height: 560px; }
+    footer { padding: 10px 16px; }
+    body > main { padding: 4px 16px 20px; border: 0; }
+    body > footer { border: 0; }
+}
+
+@media print {
+    body { background: none; padding: 0; }
+    .lateral, .trilha, header .botao, .topo-link { display: none; }
+    .colunas { grid-template-columns: 1fr; }
 }

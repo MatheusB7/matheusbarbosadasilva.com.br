@@ -18,8 +18,8 @@
   <pre>
 #include &lt;locale.h&gt;
 #include &lt;stdio.h&gt;
-#ifdef _WIN32
 #include &lt;stdlib.h&gt;
+#ifdef _WIN32
 #define LIMPAR_TELA "cls"
 #else
 #include &lt;unistd.h&gt;
@@ -41,24 +41,24 @@ int main() {
   // Cabeçalho
   printf("=============================================\n");
   printf("  CALCULADORA DE EFICI%cNCIA DE COMBUST%cVEL  \n", 210, 214);
-  printf("    FEITO PELO MATHEUS BARBOSA DA SILVA  \n", 210, 214);
+  printf("    FEITO PELO MATHEUS BARBOSA DA SILVA  \n");
   printf("=============================================\n\n");
 
   // Solicitar as informações ao usuário
   printf("Digite a capacidade do tanque de combust%cvel (em litros): ", 161);
-  scanf("%f", &capacidadeTanque);
+  scanf("%f", &amp;capacidadeTanque);
 
   printf("Digite o pre%co do etanol (R$/litro): ", 135);
-  scanf("%f", &precoEtanol);
+  scanf("%f", &amp;precoEtanol);
 
   printf("Digite o pre%co da gasolina (R$/litro): ", 135);
-  scanf("%f", &precoGasolina);
+  scanf("%f", &amp;precoGasolina);
 
   printf("Digite o consumo do carro com etanol (km/l): ");
-  scanf("%f", &consumoEtanol);
+  scanf("%f", &amp;consumoEtanol);
 
   printf("Digite o consumo do carro com gasolina (km/l): ");
-  scanf("%f", &consumoGasolina);
+  scanf("%f", &amp;consumoGasolina);
 
   // Calcular o custo por quilômetro para cada combustível
   custoPorKmEtanol = precoEtanol / consumoEtanol;
@@ -81,10 +81,10 @@ int main() {
 
   // Comparar os custos e determinar o mais eficiente
   printf("=============================================\n");
-  if (custoPorKmEtanol < custoPorKmGasolina) {
-    printf(">>> O etanol %c mais econ%cmico para o seu carro.\n", 130, 147);
+  if (custoPorKmEtanol &lt; custoPorKmGasolina) {
+    printf("&gt;&gt;&gt; O etanol %c mais econ%cmico para o seu carro.\n", 130, 147);
   } else {
-    printf(">>> A gasolina %c mais econ%cmica para o seu carro.\n", 130, 147);
+    printf("&gt;&gt;&gt; A gasolina %c mais econ%cmica para o seu carro.\n", 130, 147);
   }
   printf("=============================================\n");
 
@@ -92,22 +92,22 @@ int main() {
 }
   </pre>
 
-  <h1>Simulação do Programa</h1>
+  <h2>Simulação do Programa</h2>
   <form id="form">
     <label for="capacidadeTanque">Capacidade do tanque (em litros):</label><br>
-    <input type="number" id="capacidadeTanque" required><br>
+    <input type="number" step="any" min="0" id="capacidadeTanque" required><br>
 
     <label for="precoEtanol">Preço do etanol (R$/litro):</label><br>
-    <input type="number" id="precoEtanol" required><br>
+    <input type="number" step="any" min="0" id="precoEtanol" required><br>
 
     <label for="precoGasolina">Preço da gasolina (R$/litro):</label><br>
-    <input type="number" id="precoGasolina" required><br>
+    <input type="number" step="any" min="0" id="precoGasolina" required><br>
 
     <label for="consumoEtanol">Consumo com etanol (km/l):</label><br>
-    <input type="number" id="consumoEtanol" required><br>
+    <input type="number" step="any" min="0" id="consumoEtanol" required><br>
 
     <label for="consumoGasolina">Consumo com gasolina (km/l):</label><br>
-    <input type="number" id="consumoGasolina" required><br><br>
+    <input type="number" step="any" min="0" id="consumoGasolina" required><br><br>
 
     <button type="submit">Calcular</button>
   </form>
@@ -155,5 +155,6 @@ int main() {
     });
   </script>
 
+<script src="script.js"></script>
 </body>
 </html>

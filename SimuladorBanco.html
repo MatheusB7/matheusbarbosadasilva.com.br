@@ -20,26 +20,27 @@
             
             <!-- Exibição do código -->
             <pre>
-1. #include &lt;stdio.h&gt;
-2.
-3. #define MAX_TENTATIVAS 3
-4.
-5. typedef struct {
-6.    char nome[100];
-7.    int numeroConta;
-8.    float saldo;
-9. } ContaBancaria;
-10.
-11. void exibirMenu() {
-12.     printf("\n-------- SIMULADOR DE BANCO --------\n");
-13.     printf("1. Consultar saldo\n");
-14.     printf("2. Fazer depósito\n");
-15.     printf("3. Fazer retirada\n");
-16.     printf("4. Sair\n");
-17.     printf("-----------------------------------\n");
-18.     printf("Escolha uma opção: ");
-19. }
-20.
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define MAX_TENTATIVAS 3
+
+typedef struct {
+   char nome[100];
+   int numeroConta;
+   float saldo;
+} ContaBancaria;
+
+void exibirMenu() {
+    printf("\n-------- SIMULADOR DE BANCO --------\n");
+    printf("1. Consultar saldo\n");
+    printf("2. Fazer depósito\n");
+    printf("3. Fazer retirada\n");
+    printf("4. Sair\n");
+    printf("-----------------------------------\n");
+    printf("Escolha uma opção: ");
+}
+
 void consultarSaldo(ContaBancaria *conta) {
     printf("\n** Consultando Saldo **\n");
     printf("Saldo atual de %s (Conta #%d): R$ %.2f\n", conta-&gt;nome, conta-&gt;numeroConta, conta-&gt;saldo);
@@ -49,7 +50,7 @@ void fazerDeposito(ContaBancaria *conta) {
     float valor;
     printf("\n** Fazer Depósito **\n");
     printf("Digite o valor a ser depositado: R$ ");
-    scanf("%f", &valor);
+    scanf("%f", &amp;valor);
     
     if (valor &gt; 0) {
         conta-&gt;saldo += valor;
@@ -63,7 +64,7 @@ void fazerRetirada(ContaBancaria *conta) {
     float valor;
     printf("\n** Fazer Retirada **\n");
     printf("Digite o valor a ser retirado: R$ ");
-    scanf("%f", &valor);
+    scanf("%f", &amp;valor);
     
     if (valor &gt; 0 &amp;&amp; valor &lt;= conta-&gt;saldo) {
         conta-&gt;saldo -= valor;
@@ -81,7 +82,7 @@ int main() {
     conta.nome[strcspn(conta.nome, "\n")] = '\0';
 
     printf("Informe o número da conta: ");
-    scanf("%d", &conta.numeroConta);
+    scanf("%d", &amp;conta.numeroConta);
     
     conta.saldo = 0.0f;
     
@@ -90,17 +91,17 @@ int main() {
 
     do {
         exibirMenu();
-        scanf("%d", &escolha);
+        scanf("%d", &amp;escolha);
 
         switch (escolha) {
             case 1:
-                consultarSaldo(&conta);
+                consultarSaldo(&amp;conta);
                 break;
             case 2:
-                fazerDeposito(&conta);
+                fazerDeposito(&amp;conta);
                 break;
             case 3:
-                fazerRetirada(&conta);
+                fazerRetirada(&amp;conta);
                 break;
             case 4:
                 printf("Saindo... Obrigado por usar o Simulador de Banco!\n");
@@ -140,7 +141,7 @@ int main() {
                     </select><br>
 
                     <label for="valor">Valor (se for depósito ou retirada):</label>
-                    <input type="number" id="valor" name="valor"><br>
+                    <input type="number" id="valor" name="valor" step="0.01" min="0"><br>
 
                     <button type="submit">Submeter</button>
                 </form>
@@ -151,9 +152,10 @@ int main() {
     </main>
 
     <footer>
-        <p>&copy; 2025 Matheus Barbosa da Silva - Todos os direitos reservados</p>
+        <p>&copy; 2026 Matheus Barbosa da Silva - Todos os direitos reservados</p>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="simulador-banco.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

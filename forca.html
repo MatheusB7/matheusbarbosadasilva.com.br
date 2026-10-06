@@ -16,10 +16,10 @@
         <section id="programacao">
             <h2>Programa em C: Jogo da Forca</h2>
         <pre>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;time.h&gt;
                 
 // Palavras e dicas em português
 const char *palavras_pt[] = {
@@ -40,7 +40,7 @@ const char *dicas_pt[] = {
 "Objeto de leitura", "Máquina para cálculos", "Linguagem de programação", "Estudo da natureza e fenômenos", "Instrumento musical", 
 "Meio de transporte", "Ramo da engenharia", "Instituição de ensino", "Pessoa que ensina", "Instituição de ensino superior", 
 "Planta", "Atividade recreativa", "Esporte coletivo", "Objeto usado para ver horas", "Espaço para assistir filmes", "Campo de estudo", 
-"Estudo das reações químicas", "Matéria de estudo físico", "Ciência sobre o planeta", "Futuro distante", "Muito anos tempos", 
+"Estudo das reações químicas", "Matéria de estudo físico", "Ciência sobre o planeta", "Futuro distante", "Máquinas e dispositivos", 
 "Atividade física", "Substância congelada", "Satélite da Terra", "Estrela do sistema solar", "Água salgada", "Corpo rochoso", 
 "Pessoa com quem se compartilha momentos", "Ação de mover-se", "Grupo de pessoas", "Fruta vermelha", "Dispositivo de comunicação", 
 "Objeto para escrever", "Vestir-se", "Calçado", "Forma de pagamento", "Veículo motorizado", "Fonte de energia", "Planta colorida", 
@@ -123,7 +123,7 @@ letras_usadas[0] = '\0';  // Limpar a lista de letras usadas
 system("cls");
 system("clear");
 printf("Escolha o idioma (1- Portugues, 2- English): ");
-scanf("%d", &idioma);
+scanf("%d", &amp;idioma);
                 
 // Selecionar uma palavra aleatória
 int indice = rand() % 60;
@@ -131,7 +131,7 @@ char *palavra = (idioma == 1) ? palavras_pt[indice] : palavras_en[indice];
 char *dica = (idioma == 1) ? dicas_pt[indice] : dicas_en[indice];
                 
 tam_palavra = strlen(palavra);
-for (i = 0; i < tam_palavra; i++) {
+for (i = 0; i &lt; tam_palavra; i++) {
 letra_adivinada[i] = '_';
 }
 letra_adivinada[tam_palavra] = '\0';
@@ -139,10 +139,10 @@ letra_adivinada[tam_palavra] = '\0';
 printf("\nDica: %s\n", dica);
                 
 // Laço principal do jogo
-while (tentativas > 0) {
+while (tentativas &gt; 0) {
 ja_usada = 0;
 printf("\nPalavra: ");
-for (i = 0; i < tam_palavra; i++) {
+for (i = 0; i &lt; tam_palavra; i++) {
 printf("%c ", letra_adivinada[i]);
 }
 printf("\n");
@@ -150,10 +150,10 @@ printf("\n");
 printf("\nLetras usadas: %s\n", letras_usadas);
 printf("Tentativas restantes: %d\n", tentativas);
 printf("Digite uma letra: ");
-scanf(" %c", &letra);
+scanf(" %c", &amp;letra);
                 
 // Verificar se a letra foi usada antes
-for (i = 0; i < strlen(letras_usadas); i++) {
+for (i = 0; i &lt; strlen(letras_usadas); i++) {
 if (letras_usadas[i] == letra) {
 ja_usada = 1;
 printf("Você já usou essa letra!\n");
@@ -163,10 +163,10 @@ break;
 if (ja_usada) continue;
                 
 // Adicionar letra usada à lista
-strncat(letras_usadas, &letra, 1);
+strncat(letras_usadas, &amp;letra, 1);
                 
 // Verificar se a letra está na palavra
-for (i = 0; i < tam_palavra; i++) {
+for (i = 0; i &lt; tam_palavra; i++) {
 if (palavra[i] == letra) {
 letra_adivinada[i] = letra;
 letra_encontrada = 1;
@@ -175,7 +175,7 @@ letra_encontrada = 1;
                 
 // Verificar vitória
 vitoria = 1;
-for (i = 0; i < tam_palavra; i++) {
+for (i = 0; i &lt; tam_palavra; i++) {
 if (letra_adivinada[i] == '_') {
 vitoria = 0;
 break;
@@ -201,15 +201,14 @@ printf("\nVocê perdeu! A palavra era: %s\n", palavra);
                 
 // Perguntar se o jogador quer jogar novamente
 printf("\nDeseja jogar novamente? (1- Sim, 0- Não): ");
-scanf("%d", &jogar_novamente);
+scanf("%d", &amp;jogar_novamente);
 }
                 
 return 0;
 }
 </pre>
-    </div>
 
-    <h1>Jogo da Forca</h1>
+    <h2>Simulação do Jogo</h2>
 
     <!-- Container do jogo -->
     <div class="game-container">
@@ -221,6 +220,9 @@ return 0;
         <button class="button" id="guessButton">Adivinhar</button>
         <div id="result" class="result"></div>
     </div>
+
+    </section>
+    </main>
 
     <script>
         const palavras_pt = [
@@ -239,7 +241,7 @@ return 0;
             "Objeto de leitura", "Máquina para cálculos", "Linguagem de programação", "Estudo da natureza e fenômenos", "Instrumento musical", 
             "Meio de transporte", "Ramo da engenharia", "Instituição de ensino", "Pessoa que ensina", "Instituição de ensino superior", 
             "Planta", "Atividade recreativa", "Esporte coletivo", "Objeto usado para ver horas", "Espaço para assistir filmes", "Campo de estudo", 
-            "Estudo das reações químicas", "Matéria de estudo físico", "Ciência sobre o planeta", "Futuro distante", "Muito anos tempos", 
+            "Estudo das reações químicas", "Matéria de estudo físico", "Ciência sobre o planeta", "Futuro distante", "Máquinas e dispositivos", 
             "Atividade física", "Substância congelada", "Satélite da Terra", "Estrela do sistema solar", "Água salgada", "Corpo rochoso", 
             "Pessoa com quem se compartilha momentos", "Ação de mover-se", "Grupo de pessoas", "Fruta vermelha", "Dispositivo de comunicação", 
             "Objeto para escrever", "Vestir-se", "Calçado", "Forma de pagamento", "Veículo motorizado", "Fonte de energia", "Planta colorida", 
@@ -248,6 +250,7 @@ return 0;
             "Competição física"
         ];
 
+        const norm = c => c.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         let palavraEscolhida = '';
         let dicaEscolhida = '';
         let tentativasRestantes = 6;
@@ -261,6 +264,8 @@ return 0;
             dicaEscolhida = dicas_pt[randomIndex];
             letrasErradas = [];
             letrasCorretas = [];
+            jogoAtivo = true;
+            document.getElementById('result').textContent = '';
             tentativasRestantes = 6;
             atualizarTela();
         }
@@ -287,7 +292,7 @@ return 0;
 
         function atualizarTela() {
             const palavraExibida = palavraEscolhida.split('').map(letra => {
-                if (letrasCorretas.includes(letra)) {
+                if (letra === ' ' || letrasCorretas.includes(norm(letra))) {
                     return letra;
                 }
                 return '_';
@@ -301,28 +306,27 @@ return 0;
         }
 
         document.getElementById('guessButton').addEventListener('click', () => {
-            if (jogoAtivo) {
-                const letra = prompt('Digite uma letra:').toLowerCase();
-                if (letra && !letrasErradas.includes(letra) && !letrasCorretas.includes(letra)) {
-                    if (palavraEscolhida.includes(letra)) {
-                        letrasCorretas.push(letra);
-                    } else {
-                        letrasErradas.push(letra);
-                        tentativasRestantes--;
-                    }
-                    atualizarTela();
-                    verificarFimDeJogo();
-                } else {
-                    alert('Letra inválida ou já utilizada!');
-                }
+            const btn = document.getElementById('guessButton');
+            if (!jogoAtivo) { inicializarJogo(); btn.textContent = 'Adivinhar'; return; }
+            const entrada = prompt('Digite uma letra:');
+            if (entrada === null) return;
+            const letra = norm(entrada.trim().toLowerCase());
+            if (!/^[a-z]$/.test(letra) || letrasErradas.includes(letra) || letrasCorretas.includes(letra)) {
+                alert('Letra inválida ou já utilizada!');
+                return;
             }
+            if (norm(palavraEscolhida).includes(letra)) { letrasCorretas.push(letra); }
+            else { letrasErradas.push(letra); tentativasRestantes--; }
+            atualizarTela();
+            verificarFimDeJogo();
+            if (!jogoAtivo) btn.textContent = 'Jogar novamente';
         });
 
         function verificarFimDeJogo() {
             if (tentativasRestantes === 0) {
                 document.getElementById('result').textContent = 'Você perdeu! A palavra era: ' + palavraEscolhida;
                 jogoAtivo = false;
-            } else if (palavraEscolhida.split('').every(letra => letrasCorretas.includes(letra))) {
+            } else if (palavraEscolhida.split('').every(letra => letra === ' ' || letrasCorretas.includes(norm(letra)))) {
                 document.getElementById('result').textContent = 'Você ganhou!';
                 jogoAtivo = false;
             }
@@ -330,5 +334,6 @@ return 0;
 
         window.onload = inicializarJogo;
     </script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -4,84 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matheus Barbosa da Silva - Portfólio</title>
+    <meta name="description" content="Portfólio de Matheus Barbosa da Silva, Engenheiro da Computação e Técnico em Eletrônica: projetos de programação e eletrônica.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="light-mode">
-    <!-- Cabeçalho -->
+<div class="pagina" id="topo">
     <header>
-        <div class="header-content">
-            <h1>Matheus Barbosa da Silva</h1>
-            <p>Engenheiro da Computação | Técnico em Eletrônica</p>
-            <label class="switch">
-                <input type="checkbox" id="theme-switch">
-                <span class="slider"></span>
-            </label>
+        <div>
+            <h1><a href="index.html">Matheus Barbosa da Silva</a></h1>
+            <p>Engenheiro da Computação / Técnico em Eletrônica</p>
         </div>
-        <!-- Botões de redes sociais -->
-        <div class="social-icons">
-            <a href="https://br.linkedin.com/in/matheus-barbosa-da-silva-5681342a2" target="_blank" aria-label="LinkedIn">🔗 LinkedIn</a>
-            <a href="https://github.com/MatheusB7" target="_blank" aria-label="GitHub">💻 GitHub</a>
-            <a href="https://www.instagram.com/matheusbarbosas2/" target="_blank" aria-label="Instagram">📸 Instagram</a>
-        </div>
+        <button type="button" id="theme-switch" class="botao" aria-pressed="false">Modo escuro</button>
     </header>
 
-    <!-- Menu Lateral -->
-    <nav>
-        <ul>
-            <li class="menu-item" id="home">
-                <a href="index.html">
-                    <span class="emoji">🏠</span>
-                    <span class="menu-text">Home</span>
-                </a>
-            </li>
-            <li class="menu-item" id="programacao">
-                <a href="programacao.html">
-                    <span class="emoji">💻</span>
-                    <span class="menu-text">Programação</span>
-                </a>
-            </li>            
-            <li class="menu-item" id="eletronica">
-                <a href="eletronica.html">
-                    <span class="emoji">⚡</span>
-                    <span class="menu-text">Eletrônica</span>
-                </a>
-            </li>
-            <li class="menu-item" id="sobre">
-                <a href="sobremim.html">
-                    <span class="emoji">👤</span>
-                    <span class="menu-text">Sobre Mim</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <div class="trilha">Você está em: Início</div>
 
-    <!-- Conteúdo Principal -->
-    <main>
-        <section id="sobre">
-            <h2>Bem-vindo ao meu Portfólio!</h2>
-            <p>Olá, sou <strong>Matheus Barbosa da Silva</strong>, um apaixonado por tecnologia, programação e eletrônica. Desde a infância, sempre tive um grande interesse em entender como as coisas funcionam, o que me levou a explorar e criar projetos em várias áreas da tecnologia.</p>
-            <p>Minha trajetória começou com o desejo de entender os componentes eletrônicos e evoluiu para a programação e a automação. Ao longo dos anos, venho desenvolvendo soluções criativas que unem a funcionalidade da eletrônica e a inovação dos algoritmos. Meus projetos são resultados de um aprendizado contínuo, focado em aprimorar minhas habilidades técnicas e práticas.</p>
-            <p>Este site é uma vitrine onde compartilho alguns dos meus trabalhos, incluindo sistemas inteligentes, automações, aplicações web, circuitos eletrônicos e muito mais. Aqui, você poderá explorar o impacto que a tecnologia pode ter no nosso cotidiano e como projetos inovadores podem transformar ideias em realidade.</p>
-            <p>Explore as seções abaixo para conhecer mais sobre meus projetos e minha jornada de aprendizado.</p>
-        </section>
+    <div class="colunas">
+        <aside class="lateral">
+            <div class="caixa">
+                <h3>Navegação</h3>
+                <ul class="menu">
+                    <li><a href="index.html" aria-current="page">Início</a></li>
+                    <li><a href="programacao.html">Programação</a></li>
+                    <li><a href="eletronica.html">Eletrônica</a></li>
+                    <li><a href="sobremim.html">Sobre mim</a></li>
+                </ul>
+            </div>
+            <div class="caixa">
+                <h3>Na web</h3>
+                <ul>
+                    <li><a href="https://br.linkedin.com/in/matheus-barbosa-da-silva-5681342a2" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://github.com/MatheusB7" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://www.instagram.com/matheusbarbosas2/" target="_blank" rel="noopener">Instagram</a></li>
+                </ul>
+            </div>
+        </aside>
 
-        <section id="programacao">
-            <h2>Projetos de Programação</h2>
-            <p>Nesta seção, você encontrará uma seleção de sistemas, sites e softwares que desenvolvi ao longo da minha jornada como programador. Cada projeto reflete minha busca por soluções eficientes e escaláveis, focadas em tornar a tecnologia mais acessível e impactante.</p>
-            <div id="random-images-programacao" class="image-gallery"></div>
-        </section>
+        <main>
+            <section id="sobre" class="limpa">
+                <h2>Bem-vindo ao meu portfólio</h2>
+                <figure class="foto-direita">
+                    <img src="Images/foto-perfil.jpg" alt="Foto de Matheus Barbosa da Silva">
+                    Matheus Barbosa da Silva
+                </figure>
+                <p>Olá, sou <strong>Matheus Barbosa da Silva</strong>, um apaixonado por tecnologia, programação e eletrônica. Desde a infância, sempre tive um grande interesse em entender como as coisas funcionam, o que me levou a explorar e criar projetos em várias áreas da tecnologia.</p>
+                <p>Minha trajetória começou com o desejo de entender os componentes eletrônicos e evoluiu para a programação e a automação. Ao longo dos anos, venho desenvolvendo projetos que unem a eletrônica e os algoritmos, sempre aprendendo com cada um deles.</p>
+                <p>Este site é onde compartilho alguns dos meus trabalhos: programas em C, aplicações web, circuitos eletrônicos e automações. Mais sobre mim na página <a href="sobremim.html">Sobre mim</a>.</p>
+            </section>
 
-        <section id="eletronica">
-            <h2>Projetos de Eletrônica</h2>
-            <p>Em meus projetos de eletrônica, busco sempre explorar novas formas de automação e inovação. Aqui, você encontrará uma coleção de projetos que envolvem circuitos, sensores, controle remoto, e muito mais. Cada um desses projetos é uma prova de como a eletrônica pode ser aplicada para resolver problemas do dia a dia.</p>
-            <div id="random-images-eletronica" class="image-gallery"></div>
-        </section>
-    </main>
+            <section id="programacao">
+                <h2>Projetos de Programação</h2>
+                <p>Programas escritos em C, cada um com uma simulação em JavaScript para testar direto no navegador.</p>
+                <table class="tabela">
+                    <thead>
+                        <tr><th scope="col">Projeto</th><th scope="col">O que faz</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><a href="programacao.html#calculocombustivel">Cálculo de Combustível</a></td><td>Compara etanol e gasolina pelo custo por km e pela autonomia do tanque.</td></tr>
+                        <tr><td><a href="programacao.html#calculadoramatrizes">Calculadora de Matrizes</a></td><td>Monta matrizes de 1x1 até 4x4 e soma todos os elementos.</td></tr>
+                        <tr><td><a href="programacao.html#jogodaforca">Jogo da Forca</a></td><td>Adivinhação de palavras com dicas, em português e inglês.</td></tr>
+                        <tr><td><a href="programacao.html#simulador-banco">Simulador de Banco</a></td><td>Consulta de saldo, depósito e retirada em uma conta simples.</td></tr>
+                        <tr><td><a href="programacao.html#roleta">Roleta</a></td><td>Sorteia uma entre as opções digitadas.</td></tr>
+                        <tr><td><a href="programacao.html#calculadorabhaskara">Fórmula de Bhaskara</a></td><td>Resolve equações do segundo grau mostrando o delta e as raízes.</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="eletronica">
+                <h2>Projetos de Eletrônica</h2>
+                <p>Circuitos, sensores e automação, do curso técnico no IFPR até a faculdade.</p>
+                <ul class="lista-projetos">
+                    <li>
+                        <a href="eletronica.html#robo-irrigacao"><img loading="lazy" src="Images/iftech-e-jo-cif.jpg" alt="Robô de Irrigação Pontual"></a>
+                        <div>
+                            <strong><a href="eletronica.html#robo-irrigacao">Robô de Irrigação Pontual</a></strong> <span class="ano">(2017, IFPR)</span>
+                            <p>Veículo autônomo que mede a umidade do solo e irriga só onde precisa.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="eletronica.html#esteira-contador"><img loading="lazy" src="Images/foto-circuito-contador-de-decada.jpg" alt="Esteira com Display Contador"></a>
+                        <div>
+                            <strong><a href="eletronica.html#esteira-contador">Esteira com Display Contador</a></strong> <span class="ano">(2018, IFPR)</span>
+                            <p>Esteira que conta de 00 a 99 os objetos que passam pelo sensor infravermelho.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="eletronica.html#interruptor-palmas"><img loading="lazy" src="Images/circuito-palmas.jpg" alt="Interruptor por Palmas"></a>
+                        <div>
+                            <strong><a href="eletronica.html#interruptor-palmas">Interruptor por Palmas</a></strong> <span class="ano">(Universidade Positivo)</span>
+                            <p>Liga e desliga uma lâmpada com o som de palmas, usando CI 555 e CI 4017.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="eletronica.html#carrinho-policia"><img loading="lazy" src="Images/carrinho-de-policia.jpg" alt="Carrinho de Polícia"></a>
+                        <div>
+                            <strong><a href="eletronica.html#carrinho-policia">Carrinho de Polícia com Cockpit</a></strong> <span class="ano">(Arduino)</span>
+                            <p>Carrinho de controle remoto refeito com Arduino, giroflex e cockpit com volante e pedais.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Matheus Barbosa da Silva - Todos os direitos reservados</p>
+        <p>&copy; 2026 Matheus Barbosa da Silva. Todos os direitos reservados.</p>
+        <p><a href="#topo">Voltar ao topo</a></p>
     </footer>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

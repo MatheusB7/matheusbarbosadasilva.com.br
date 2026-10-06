@@ -16,13 +16,13 @@
     <section id="programacao">
       <h2>Programa em C: Fórmula de Bhaskara</h2>
       <pre>
-#include <stdio.h>
-#include <stdlib.h>
-#include <windows.h>
-#include <math.h>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;windows.h&gt;
+#include &lt;math.h&gt;
             
 int main() {
-system("chcp 65001 > nul");
+system("chcp 65001 &gt; nul");
 system("cls");
             
 float a, b, c, delta, x1, x2;
@@ -33,11 +33,11 @@ printf("          Criador: Matheus Barbosa da Silva\n\n");
 printf("***************************************************\n\n");
             
 printf("\nVocê tem uma função de 2º grau. Me informe o valor de (a): ");
-scanf("%f", &a);
+scanf("%f", &amp;a);
 printf("\nVocê tem uma função de 2º grau. Me informe o valor de (b): ");
-scanf("%f", &b);
+scanf("%f", &amp;b);
 printf("\nVocê tem uma função de 2º grau. Me informe o valor de (c): ");
-scanf("%f", &c);
+scanf("%f", &amp;c);
             
 printf("\n\nEstou calculando o Delta.\n\n");
 Sleep(1000);
@@ -76,7 +76,7 @@ Sleep(1000);
 printf("         2 * %.1f\n\n", a);
 Sleep(1000);
             
-if (delta >= 0) {
+if (delta &gt;= 0) {
 x1 = (-b + sqrt(delta)) / (2 * a);
 x2 = (-b - sqrt(delta)) / (2 * a);
             
@@ -93,16 +93,16 @@ return 0;
             
       </pre>
 
-      <h1>Simulação do Programa</h1>
+      <h2>Simulação do Programa</h2>
       <form id="form">
         <label for="a">Digite o valor de a:</label><br>
-        <input type="number" id="a" required><br><br>
+        <input type="number" step="any" id="a" required><br><br>
 
         <label for="b">Digite o valor de b:</label><br>
-        <input type="number" id="b" required><br><br>
+        <input type="number" step="any" id="b" required><br><br>
 
         <label for="c">Digite o valor de c:</label><br>
-        <input type="number" id="c" required><br><br>
+        <input type="number" step="any" id="c" required><br><br>
 
         <button type="submit">Calcular</button>
       </form>
@@ -121,6 +121,8 @@ return 0;
           const a = parseFloat(document.getElementById('a').value);
           const b = parseFloat(document.getElementById('b').value);
           const c = parseFloat(document.getElementById('c').value);
+
+          if (a === 0) { alert("O valor de a não pode ser zero."); return; }
 
           const delta = b * b - 4 * a * c;
           let x1 = 0, x2 = 0;
@@ -148,7 +150,8 @@ return 0;
     </section>
   </main>
   <footer>
-    <p>&copy; 2025 Matheus Barbosa</p>
+    <p>&copy; 2026 Matheus Barbosa</p>
   </footer>
+<script src="script.js"></script>
 </body>
 </html>
